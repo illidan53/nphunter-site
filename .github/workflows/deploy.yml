@@ -1,0 +1,54 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: us-east-1
+  S3_BUCKET: nphunter-site
+  CLOUDFRONT_DISTRIBUTION_ID: E4B5P9MJTIMYQ
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Sync to S3
+        run: |
+          aws s3 sync . "s3://${S3_BUCKET}/" \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "README.md" \
+            --exclude ".gitignore"
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "$CLOUDFRONT_DISTRIBUTION_ID" \
+            --paths "/*"
+
+      - name: Smoke Test
+        run: |
+          echo "Waiting 30s for invalidation to propagate..."
+          sleep 30
+          STATUS=$(curl -s -o /dev/null -w '%{http_code}' --connect-timeout 10 "https://d6y918unhwjl9.cloudfront.net/")
+          echo "CloudFront status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "Smoke test FAILED: expected 200, got $STATUS"
+            exit 1
+          fi
+          echo "Smoke test PASSED"
