@@ -20,4 +20,5 @@ GitHub Actions assumes role `github-actions-nphunter-site-deploy` via OIDC.
 npm install
 npm run test:e2e
 NPHUNTER_SITE_BASE_URL=https://nphunter.net npm run test:e2e
+NPHUNTER_SITE_BASE_URL=https://nphunter.net NPHUNTER_SITE_VERIFY_TARGETS=1 npm run test:e2e
 ```

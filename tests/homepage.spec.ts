@@ -18,4 +18,10 @@ test("homepage exposes project entries including the finance workbench", async (
     "href",
     "https://finance.nphunter.net"
   );
+
+  if (process.env.NPHUNTER_SITE_VERIFY_TARGETS === "1") {
+    await page.goto("https://finance.nphunter.net");
+    await expect(page).toHaveTitle("Stock Workbench");
+    await expect(page.getByRole("heading", { name: "Stock Workbench" })).toBeVisible();
+  }
 });
