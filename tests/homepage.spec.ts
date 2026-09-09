@@ -3,7 +3,11 @@ import { expect, test } from "@playwright/test";
 const homepageUrl = process.env.NPHUNTER_SITE_BASE_URL ?? `file://${process.cwd()}/index.html`;
 
 test("homepage exposes all published project entries", async ({ page }) => {
-  await page.goto(homepageUrl);
+  const response = await page.goto(homepageUrl);
+  if (/^https?:/.test(homepageUrl)) {
+    // A fresh browser must not receive HTML that it may reuse without validation.
+    expect(response?.headers()["cache-control"]).toMatch(/(?:^|,)\s*no-cache(?:,|$)/);
+  }
 
   await expect(page.getByRole("heading", { name: "nphunter.net" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Play DarkPath" })).toHaveAttribute(
