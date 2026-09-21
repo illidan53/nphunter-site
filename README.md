@@ -25,3 +25,7 @@ NPHUNTER_SITE_BASE_URL=https://nphunter.net NPHUNTER_SITE_VERIFY_TARGETS=1 npm r
 ```
 
 The HTML cache policy requires browsers to validate their cached homepage before reuse. CloudFront invalidation alone cannot clear a page already cached in a visitor’s browser. Visitors who still hold a page from before this policy was added should reload once.
+
+## Languages
+
+The header selector switches between Chinese (default) and English. Copy is maintained separately in `locales/zh.js` and `locales/en.js`, using matching keys. `language.js` applies text, accessible labels, image descriptions, document language and metadata, and remembers an explicit selection in localStorage. Switching still works when storage is blocked. The HTML retains Chinese fallback copy when JavaScript is unavailable. Project destinations are shared between languages.

@@ -4,6 +4,7 @@ const homepageUrl = process.env.NPHUNTER_SITE_BASE_URL ?? `file://${process.cwd(
 
 test("homepage exposes all published project entries", async ({ page }) => {
   const response = await page.goto(homepageUrl);
+  await page.locator("#language").selectOption("en");
   if (/^https?:/.test(homepageUrl)) {
     // A fresh browser must not receive HTML that it may reuse without validation.
     expect(response?.headers()["cache-control"]).toMatch(/(?:^|,)\s*no-cache(?:,|$)/);
@@ -22,7 +23,7 @@ test("homepage exposes all published project entries", async ({ page }) => {
     "href",
     "https://cgame.nphunter.net"
   );
-  await expect(page.getByRole("link", { name: "Play 春野逐鹿" })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Play Spring Fields" })).toHaveAttribute(
     "href",
     "https://tgame.nphunter.net"
   );
@@ -42,7 +43,8 @@ test("homepage exposes all published project entries", async ({ page }) => {
 test("TGame entry opens the current game setup", async ({ page }) => {
   test.skip(process.env.NPHUNTER_SITE_VERIFY_TARGETS !== "1", "Public target verification runs after deployment");
   await page.goto(homepageUrl);
-  await page.getByRole("link", { name: "Play 春野逐鹿" }).click();
+  await page.locator("#language").selectOption("en");
+  await page.getByRole("link", { name: "Play Spring Fields" }).click();
   await expect(page).toHaveTitle("富甲天下4 · 兖州原版复建");
   await page.getByRole("button", { name: "自由模式", exact: true }).click();
   await expect(page.getByRole("button", { name: "兖州", exact: true })).toBeEnabled();
