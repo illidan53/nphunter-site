@@ -35,13 +35,14 @@ test("homepage exposes all published project entries", async ({ page }) => {
 });
 
 
-test("TGame entry opens the playable game", async ({ page }) => {
+test("TGame entry opens the current game setup", async ({ page }) => {
   test.skip(process.env.NPHUNTER_SITE_VERIFY_TARGETS !== "1", "Public target verification runs after deployment");
   await page.goto(homepageUrl);
   await page.getByRole("link", { name: "Play 春野逐鹿" }).click();
-  await expect(page).toHaveTitle("富甲天下 · 春野逐鹿");
-  await expect(page.getByRole("heading", { name: "择一主公，入主春野" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "开启新对局" })).toBeEnabled();
+  await expect(page).toHaveTitle("富甲天下4 · 兖州原版复建");
+  await page.getByRole("button", { name: "自由模式", exact: true }).click();
+  await expect(page.getByRole("button", { name: "兖州", exact: true })).toBeEnabled();
+  await expect(page.getByRole("button", { name: "选择劉備", exact: true })).toBeVisible();
   const response = await page.request.get("https://tgame.nphunter.net/healthz");
   expect(response.ok()).toBeTruthy();
   expect(await response.json()).toMatchObject({ service: "tgame", status: "ok" });
