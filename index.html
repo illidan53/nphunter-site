@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#faf9f5">
-  <meta name="description" content="NPHunter 的个人项目小站。探索 DarkPath、Abyssal Echoes、春野逐鹿，或打开 Finance Workbench。">
+  <meta name="description" content="NPHunter 的个人项目小站。探索 24 Points Game、DarkPath、Abyssal Echoes、春野逐鹿，或打开 Finance Workbench。">
   <title>nphunter.net — 好奇心的游乐场</title>
   <style>
     :root { color-scheme: light; --paper:#faf9f5; --ink:#242b39; --muted:#626873; --blue:#3059d9; --line:#dfdfd8; --white:#fff; --game-bg:#fff0db; --game-ink:#885020; --echo-bg:#eeeafa; --echo-ink:#655098; --spring-bg:#f9edbd; --spring-ink:#746022; --finance-bg:#dff3e9; --finance-ink:#26634c; --soft-blue:#e7edff; --status-bg:#ffe16b; --status-ink:#573800; --shadow:0 12px 32px #242b3910; }
@@ -37,6 +37,11 @@
     .project { --surface:var(--game-bg); --accent:var(--game-ink); position:relative; overflow:hidden; display:flex; flex-direction:column; min-height:268px; padding:28px; border:1px solid transparent; border-radius:24px; background:var(--surface); transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
     .project:hover { transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--accent); }
     .project:active { transform:translateY(-1px); }
+    .points { --surface:#fffefa; --accent:#654795; grid-column:1 / -1; border-color:#d8c6ed; padding-right:48%; }
+    .points .project-top, .points .project-content { width:100%; }
+    .points .project-content p { max-width:32em; }
+    .points-art { position:absolute; width:38%; height:auto; right:5%; top:50%; transform:translateY(-50%); }
+    .points .project-type { background:var(--echo-bg); }
     .echo { --surface:var(--echo-bg); --accent:var(--echo-ink); }
     .spring { --surface:var(--spring-bg); --accent:var(--spring-ink); }
     .finance { --surface:var(--finance-bg); --accent:var(--finance-ink); }
@@ -57,6 +62,7 @@
     .footer-note svg { width:16px; height:16px; color:var(--blue); }
     @media (max-width:900px) { .shell { width:calc(100% - 48px); } .hero { grid-template-columns:1fr 190px; padding:48px 0; } .card-art { width:115px; right:2px; top:74px; } h3 { font-size:24px; } .project { padding:24px; } .project-content { width:calc(100% - 80px); } .project p { max-width:calc(100% - 20px); } .domain { display:none; } }
     @media (max-width:600px) { .shell { width:calc(100% - 36px); } header { min-height:80px; gap:12px; } .brand { font-size:16px; gap:8px; } nav { gap:12px; font-size:13px; } .nav-note { display:none; } .hero { grid-template-columns:1fr; padding:42px 0 36px; gap:0; } h1 { font-size:48px; letter-spacing:-2.7px; } .hero-art { display:none; } .hero-title { font-size:28px; } .intro { font-size:16px; max-width:25em; } .projects { grid-template-columns:1fr; gap:16px; } .section-heading { align-items:baseline; } .section-heading p { font-size:12px; } .project { min-height:254px; } .card-art { width:132px; right:6px; top:64px; } .project-content { width:calc(100% - 78px); } .project p { max-width:calc(100% - 16px); } footer { flex-direction:column; gap:8px; margin-top:24px; padding:24px 0; } }
+    @media (max-width:600px) { .points { padding-right:24px; } .points-art { position:static; width:100%; max-width:360px; align-self:center; transform:none; margin-top:16px; } .points .project-content p { max-width:100%; } }
     @media (prefers-reduced-motion:reduce) { *, *::before, *::after { transition:none !important; scroll-behavior:auto !important; } .project:hover, .project:active { transform:none; } }
   </style>
 </head>
@@ -80,28 +86,34 @@
         </svg>
       </section>
       <section id="projects" aria-labelledby="projects-title">
-        <div class="section-heading"><h2 id="projects-title">从这里，开启探索</h2><p>03 款游戏 / 01 个工具</p></div>
+        <div class="section-heading"><h2 id="projects-title">从这里，开启探索</h2><p>04 款游戏 / 01 个工具</p></div>
         <div class="projects">
+          <a class="project points" href="https://1gp-game-1bb7a52890b41f01-q6ozbh23f-1gp-studio.vercel.app/" aria-label="Play 24 Points Game">
+            <div class="project-top"><span>01 / GAME</span><span class="project-type">24 点 · 益智纸牌</span></div>
+            <div class="project-content"><h3>24 Points Game</h3><p>四张纸牌，加减乘除，凑出 24。<br>随心练习、13 轮竞速，或挑战无尽模式。</p></div>
+            <img class="points-art" src="assets/24-points-cards.png" width="932" height="374" alt="Make 24 游戏中的 A、2、3、4 四张纸牌">
+            <div class="project-bottom"><span class="cta">发牌，开始玩<span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
+          </a>
           <a class="project" href="https://ggame.nphunter.net" aria-label="Play DarkPath" aria-describedby="darkpath-status">
-            <div class="project-top"><span>01 / GAME</span><span id="darkpath-status" class="project-status">半成品 · 开发中</span></div>
+            <div class="project-top"><span>02 / GAME</span><span id="darkpath-status" class="project-status">半成品 · 开发中</span></div>
             <div class="project-content"><h3>DarkPath</h3><p>走进暗途，开启你的下一场冒险。</p></div>
             <svg class="card-art" viewBox="0 0 160 160" fill="none" aria-hidden="true"><circle cx="90" cy="78" r="57" fill="#ffe0af"/><path d="M52 124V67a32 32 0 0 1 64 0v57" stroke="currentColor" stroke-width="3"/><path d="M64 124V69a20 20 0 0 1 40 0v55" fill="#c98449"/><path d="m83 78 7 19-13 20 14 16" stroke="#fff0db" stroke-width="3" stroke-linecap="round"/><path d="M39 124h91M51 135h69" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="m127 33 3 9 9 3-9 3-3 9-3-9-9-3 9-3Z" fill="currentColor"/></svg>
             <div class="project-bottom"><span class="cta">进入游戏<span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span><span class="domain">ggame.nphunter.net</span></div>
           </a>
           <a class="project echo" href="https://cgame.nphunter.net" aria-label="Play Abyssal Echoes" aria-describedby="echoes-status">
-            <div class="project-top"><span>02 / GAME</span><span id="echoes-status" class="project-status">半成品 · 开发中</span></div>
+            <div class="project-top"><span>03 / GAME</span><span id="echoes-status" class="project-status">半成品 · 开发中</span></div>
             <div class="project-content"><h3>Abyssal Echoes</h3><p>循着回声，探索更深处的未知。</p></div>
             <svg class="card-art" viewBox="0 0 160 160" fill="none" aria-hidden="true"><circle cx="87" cy="77" r="56" fill="#ddd3f2"/><ellipse cx="87" cy="89" rx="54" ry="29" stroke="currentColor" stroke-width="2"/><ellipse cx="87" cy="89" rx="39" ry="20" stroke="currentColor" stroke-width="2"/><ellipse cx="87" cy="89" rx="23" ry="11" stroke="currentColor" stroke-width="2"/><path d="m87 32 17 29-17 29-17-29Z" fill="#8a72b5"/><path d="m87 32 0 58-17-29Z" fill="#b59cd8"/><path d="m128 27 3 8 8 3-8 3-3 8-3-8-8-3 8-3Z" fill="currentColor"/><circle cx="43" cy="126" r="4" fill="currentColor"/></svg>
             <div class="project-bottom"><span class="cta">进入游戏<span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span><span class="domain">cgame.nphunter.net</span></div>
           </a>
           <a class="project spring" href="https://tgame.nphunter.net" aria-label="Play 春野逐鹿">
-            <div class="project-top"><span>03 / GAME</span><span class="project-type">游戏世界</span></div>
+            <div class="project-top"><span>04 / GAME</span><span class="project-type">游戏世界</span></div>
             <div class="project-content"><h3>春野逐鹿</h3><p>入主春野，展开一局新的故事。</p></div>
             <svg class="card-art" viewBox="0 0 160 160" fill="none" aria-hidden="true"><circle cx="90" cy="78" r="56" fill="#f1dc8c"/><path d="m33 117 36-35 24 20 24-31 27 46Z" fill="#c4bd78"/><path d="M78 107V35" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="m80 36 44 9-15 15 15 15-44-9Z" fill="#fff9e7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m65 120 13-13 14 13m-43 10h69" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="46" cy="57" r="10" fill="#fff9e7"/></svg>
             <div class="project-bottom"><span class="cta">进入游戏<span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span><span class="domain">tgame.nphunter.net</span></div>
           </a>
           <a class="project finance" href="https://finance.nphunter.net" aria-label="Open Finance Workbench">
-            <div class="project-top"><span>04 / FINANCE</span><span class="project-type">金融工具</span></div>
+            <div class="project-top"><span>05 / FINANCE</span><span class="project-type">金融工具</span></div>
             <div class="project-content"><h3>Finance <br>Workbench</h3><p>换个视角，打开你的金融工作台。</p></div>
             <svg class="card-art" viewBox="0 0 160 160" fill="none" aria-hidden="true"><circle cx="88" cy="78" r="57" fill="#bfe2ce"/><rect x="36" y="46" width="105" height="78" rx="10" fill="#f1fcf5" stroke="currentColor" stroke-width="2" transform="rotate(-7 36 46)"/><path d="M53 108V91m22 14V81m22 21V69m22 30V78" stroke="#83b99a" stroke-width="10"/><path d="m50 79 25-17 21 2 24-24m-14 2 15-3-1 15" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div class="project-bottom"><span class="cta">打开工作台<span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span><span class="domain">finance.nphunter.net</span></div>

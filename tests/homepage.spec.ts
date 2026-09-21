@@ -10,6 +10,10 @@ test("homepage exposes all published project entries", async ({ page }) => {
   }
 
   await expect(page.getByRole("heading", { name: "nphunter.net" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Play 24 Points Game" })).toHaveAttribute(
+    "href",
+    "https://1gp-game-1bb7a52890b41f01-q6ozbh23f-1gp-studio.vercel.app/"
+  );
   await expect(page.getByRole("link", { name: "Play DarkPath" })).toHaveAttribute(
     "href",
     "https://ggame.nphunter.net"
