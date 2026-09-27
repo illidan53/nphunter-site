@@ -28,7 +28,6 @@
     .brand-mark { display:grid; place-items:center; width:36px; height:36px; border-radius:12px; background:var(--blue); color:var(--white); font-size:23px; transform:rotate(-7deg); }
     #language { min-height:44px; padding:8px 12px; border:1px solid var(--line); border-radius:12px; background:var(--white); color:var(--ink); font:inherit; font-size:14px; cursor:pointer; }
     .project-top { gap:12px; flex-wrap:wrap; }
-    .project-type, .project-status { letter-spacing:0; }
     .project-content { overflow-wrap:break-word; }
     .nav-note { color:var(--muted); font-size:12px; letter-spacing:1.5px; }
     .hero { display:grid; grid-template-columns:1fr 270px; align-items:center; gap:32px; padding:66px 0 52px; }
@@ -47,17 +46,13 @@
     .featured .project-content p { max-width:32em; }
     .featured-art { position:absolute; width:38%; height:auto; right:5%; top:50%; transform:translateY(-50%); }
     .points { --surface:#fffefa; --accent:#654795; border-color:#d8c6ed; }
-    .points .project-type { background:var(--echo-bg); }
     .crown { --surface:#fffefa; --accent:var(--game-ink); border-color:#ecd3b3; }
-    .crown .project-type { background:var(--game-bg); }
     .spring { --surface:var(--spring-bg); --accent:var(--spring-ink); }
     .project[data-dialog] { cursor:pointer; }
     .project:has(.cta:focus-visible) { outline:3px solid var(--blue); outline-offset:6px; }
     .finance { --surface:var(--finance-bg); --accent:var(--finance-ink); }
     .project-top { display:flex; align-items:center; justify-content:space-between; color:var(--accent); font-size:12px; font-weight:750; letter-spacing:1.6px; }
-    .project-type { border:1px solid currentColor; border-radius:20px; padding:5px 10px; font-size:12px; letter-spacing:1px; }
     .project-status { display:inline-flex; align-items:center; gap:6px; padding:6px 13px; border:1px solid var(--status-ink); border-radius:8px; background:var(--status-bg); color:var(--status-ink); font-size:14px; font-weight:800; letter-spacing:1px; box-shadow:2px 2px 0 var(--status-ink); }
-    .project-top .project-status { margin:-2.5px 0; }
     .project-content { position:relative; z-index:1; width:70%; margin-top:24px; }
     h3 { margin:0 0 9px; font-size:28px; letter-spacing:-.8px; line-height:1.25; }
     .project p { margin:0; color:var(--accent); font-size:14px; line-height:1.8; }
@@ -129,7 +124,7 @@
         <div class="projects" id="project-track">
           <a class="project featured points" href="https://1gp-game-1bb7a52890b41f01-q6ozbh23f-1gp-studio.vercel.app/" aria-label="玩 24 点游戏" data-i18n-aria-label="points.link">
             <div class="slide-inner">
-              <div class="project-top"><span><span data-i18n="category.1">01 / 游戏</span></span><span class="project-type"><span data-i18n="points.type">24 点 · 益智纸牌</span></span></div>
+              <div class="project-top"><span><span data-i18n="category.1">01 / 游戏</span></span></div>
               <div class="project-content"><h3><span data-i18n="points.title">24 点游戏</span></h3><p><span data-i18n="points.intro">四张纸牌，加减乘除，凑出 24。</span><br><span data-i18n="points.modes">随心练习、13 轮竞速，或挑战无尽模式。</span></p></div>
               <span class="project-screen"><img class="featured-art" src="assets/24-points-cards.png?v=20260926c" width="932" height="374" alt="24 点游戏中的 A、2、3、4 四张纸牌" data-i18n-alt="points.alt"></span>
               <div class="project-bottom"><span class="cta"><span data-i18n="points.cta">发牌，开始玩</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
@@ -137,7 +132,7 @@
           </a>
           <a class="project featured crown" href="https://1gp-game-b83051de5d1f07c4-38xd8px29-1gp-studio.vercel.app/" aria-label="玩暗冠棋" data-i18n-aria-label="crown.link">
             <div class="slide-inner">
-              <div class="project-top"><span><span data-i18n="category.2">02 / 游戏</span></span><span class="project-type"><span data-i18n="crown.type">国际象棋 · 翻棋</span></span></div>
+              <div class="project-top"><span><span data-i18n="category.2">02 / 游戏</span></span></div>
               <div class="project-content"><h3><span data-i18n="crown.title">暗冠棋</span></h3><p><span data-i18n="crown.intro">32 枚暗棋，翻开、移动，以大吃小。</span><br><span data-i18n="crown.modes">但兵能吃王。人机对战，或同屏双人。</span></p></div>
               <span class="project-screen"><img class="featured-art" src="assets/crownflip-tokens.svg" width="480" height="200" alt="暗冠棋的棋子：翻开的王和马、一枚暗棋，以及正在翻开的后" data-i18n-alt="crown.alt"></span>
               <div class="project-bottom"><span class="cta"><span data-i18n="crown.cta">翻一枚，开始玩</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
@@ -145,7 +140,7 @@
           </a>
           <div class="project spring" data-dialog="spring-dialog">
             <div class="slide-inner">
-              <div class="project-top"><span><span data-i18n="category.3">03 / 游戏</span></span><span class="project-status"><span data-i18n="spring.status">Godot · 不公开</span></span></div>
+              <div class="project-top"><span><span data-i18n="category.3">03 / 游戏</span></span></div>
               <div class="project-content"><h3><span data-i18n="spring.title">春野逐鹿</span></h3><p><span data-i18n="spring.intro">一款老游戏的个人复刻实验，只在本地运行。</span></p></div>
               <span class="project-screen"><svg class="card-art" viewBox="0 0 160 160" fill="none" aria-hidden="true"><use href="#spring-art"/></svg></span>
               <div class="project-bottom"><button class="cta" type="button" aria-haspopup="dialog" aria-controls="spring-dialog" aria-label="了解项目：春野逐鹿" data-i18n-aria-label="spring.button"><span data-i18n="spring.cta">了解项目</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></button></div>
@@ -153,7 +148,7 @@
           </div>
           <a class="project finance" href="https://finance.nphunter.net" aria-label="打开金融工作台" data-i18n-aria-label="finance.link">
             <div class="slide-inner">
-              <div class="project-top"><span><span data-i18n="category.4">04 / 金融</span></span><span class="project-type"><span data-i18n="finance.type">金融工具</span></span></div>
+              <div class="project-top"><span><span data-i18n="category.4">04 / 金融</span></span></div>
               <div class="project-content"><h3><span data-i18n="finance.title">金融工作台</span></h3><p><span data-i18n="finance.intro">换个视角，打开你的金融工作台。</span></p></div>
               <span class="project-screen"><svg class="card-art" viewBox="0 0 160 160" fill="none" aria-hidden="true"><circle cx="88" cy="78" r="57" fill="#bfe2ce"/><rect x="36" y="46" width="105" height="78" rx="10" fill="#f1fcf5" stroke="currentColor" stroke-width="2" transform="rotate(-7 36 46)"/><path d="M53 108V91m22 14V81m22 21V69m22 30V78" stroke="#83b99a" stroke-width="10"/><path d="m50 79 25-17 21 2 24-24m-14 2 15-3-1 15" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <div class="project-bottom"><span class="cta"><span data-i18n="finance.cta">打开工作台</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span><span class="domain">finance.nphunter.net</span></div>
@@ -192,8 +187,8 @@
       <div class="dialog-actions"><button class="dialog-ok" type="button" data-close><span data-i18n="dialog.ok">知道了</span></button></div>
     </div>
   </dialog>
-  <script src="locales/zh.js?v=20260926d"></script>
-  <script src="locales/en.js?v=20260926d"></script>
+  <script src="locales/zh.js?v=20260926e"></script>
+  <script src="locales/en.js?v=20260926e"></script>
   <script src="language.js"></script>
   <script src="projects.js"></script>
   <script src="styled.js"></script>

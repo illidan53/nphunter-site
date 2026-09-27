@@ -123,8 +123,6 @@
 :root[data-style="styled"] :is(.project-top, .project-content, .project-bottom) { margin-inline:18px; }
 :root[data-style="styled"] .project:not(.is-active) :is(.project-top, .project-content, .project-bottom) { pointer-events:none; }
 :root[data-style="styled"] .project-top { justify-content:space-between; gap:10px; margin-top:16px; color:var(--s-muted); font-size:12px; letter-spacing:1.8px; }
-:root[data-style="styled"] .project-type { border-color:color-mix(in srgb, var(--p-accent) 55%, transparent); background:color-mix(in srgb, var(--p-accent) 10%, transparent); color:var(--p-accent); }
-:root[data-style="styled"] .project-status { margin:0; padding:5px 11px; border:1px solid color-mix(in srgb, var(--p-accent) 60%, transparent); border-radius:20px; background:color-mix(in srgb, var(--p-accent) 12%, transparent); color:var(--p-accent); box-shadow:none; font-size:12px; }
 :root[data-style="styled"] .project-content { width:auto; margin-top:10px; }
 :root[data-style="styled"] .project h3 { margin:0 0 6px; color:var(--s-ink); font-size:clamp(24px, 2.1vw, 30px); }
 :root[data-style="styled"] .project p { max-width:none; margin:0; color:var(--s-muted); font-size:14.5px; line-height:1.65; }
@@ -167,7 +165,7 @@
 :root[data-style="styled"] :is(.project-dialog, .auth-dialog)::backdrop { background:rgba(3, 4, 14, .66); }
 :root[data-style="styled"] .dialog-head { background:linear-gradient(145deg, #2a3a12, #121c0b 75%); color:#d6f290; }
 :root[data-style="styled"] .dialog-head h2 { color:var(--s-ink); }
-:root[data-style="styled"] .dialog-head .project-status { border-color:rgba(214, 242, 144, .6); background:rgba(214, 242, 144, .12); color:#d6f290; }
+:root[data-style="styled"] .dialog-head .project-status { padding:5px 11px; border:1px solid rgba(214, 242, 144, .6); border-radius:20px; background:rgba(214, 242, 144, .12); color:#d6f290; box-shadow:none; font-size:12px; }
 :root[data-style="styled"] .dialog-close { color:#d6f290; }
 :root[data-style="styled"] .dialog-close:hover,
 :root[data-style="styled"] .auth-dialog .auth-close:hover { background:rgba(255, 255, 255, .08); }
