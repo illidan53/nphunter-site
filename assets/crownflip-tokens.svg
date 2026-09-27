@@ -6,7 +6,8 @@
       <circle r="41" stroke="#efe5d8" stroke-width="2"/>
     </symbol>
   </defs>
-  <g fill="#eee7dc">
+  <!-- Ground shadows: translucent so they read on light cards and dark planets alike -->
+  <g fill="#885020" fill-opacity=".14">
     <ellipse cx="80" cy="172" rx="48" ry="8"/>
     <ellipse cx="196" cy="158" rx="48" ry="8"/>
     <ellipse cx="316" cy="176" rx="30" ry="6"/>

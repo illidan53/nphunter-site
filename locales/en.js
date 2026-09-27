@@ -52,5 +52,13 @@ window.NPHunterLocales.en = {
   "finance.link": "Open Finance Workbench",
   "page.title": "nphunter — A playground for curiosity",
   "page.description": "Explore NPHunter’s personal projects: 24 Points Game, Crownflip, Spring Fields, and Finance Workbench.",
-  "language.label": "Choose language"
+  "language.label": "Choose language",
+  "style.label": "Interface style",
+  "style.normal": "Normal",
+  "style.styled": "Styled",
+  "carousel.prev": "Previous project",
+  "carousel.next": "Next project",
+  "carousel.hint": "to switch projects",
+  "carousel.status": "{title}, {index} of {total}",
+  "dock.label": "Choose a project"
 };

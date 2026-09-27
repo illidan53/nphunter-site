@@ -4,13 +4,17 @@
     en: { signin:'Sign in', signup:'Sign up', close:'Close', intro:'Continue with your existing account. Your first sign-in creates an account automatically.', loading:'Connecting…', guest:'Guest', user:'Member', admin:'Administrator', google:'Sign in with Gmail / Google', microsoft:'Sign in with Outlook / Microsoft', logout:'Sign out', history:'Visit history', unavailable:'Sign-in is not configured or temporarily unavailable. You can continue as a guest.', failed:'Sign-in was not completed. Please try again.', privacy:'Visit analytics record IP, time, country, browser details and a signature, visible only to administrators. Signatures provide approximate deduplication and may change with settings. Default retention: 90 days.', signing:'Signing out…' }
   };
   const header = document.querySelector('header');
-  const actions = document.createElement('div');
-  actions.className = 'header-actions';
-  actions.append(document.querySelector('#language'));
+  // The homepage ships its own container (language and style switch); other pages get one here.
+  let actions = header.querySelector('.header-actions');
+  if (!actions) {
+    actions = document.createElement('div');
+    actions.className = 'header-actions';
+    actions.append(document.querySelector('#language'));
+    header.append(actions);
+  }
   const bar = document.createElement('div');
   bar.className = 'account-bar';
   actions.append(bar);
-  header.append(actions);
   const dialog = document.createElement('dialog');
   dialog.className = 'auth-dialog';
   dialog.setAttribute('aria-labelledby', 'auth-title');

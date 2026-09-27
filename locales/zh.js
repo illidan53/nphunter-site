@@ -52,5 +52,13 @@ window.NPHunterLocales.zh = {
   "finance.link": "打开金融工作台",
   "page.title": "nphunter — 好奇心的游乐场",
   "page.description": "NPHunter 的个人项目小站。探索 24 点游戏、暗冠棋、春野逐鹿和金融工作台。",
-  "language.label": "选择语言"
+  "language.label": "选择语言",
+  "style.label": "界面风格",
+  "style.normal": "常规",
+  "style.styled": "风格化",
+  "carousel.prev": "上一个项目",
+  "carousel.next": "下一个项目",
+  "carousel.hint": "切换项目",
+  "carousel.status": "{title}，第 {index} 个，共 {total} 个",
+  "dock.label": "选择项目"
 };

@@ -49,7 +49,7 @@ jobs:
       - name: Sync to S3
         run: |
           mkdir -p /tmp/nphunter-public
-          cp index.html history.html privacy.html language.js projects.js account.js account.css history.js history-language.js /tmp/nphunter-public/
+          cp index.html history.html privacy.html language.js projects.js styled.js styled.css account.js account.css history.js history-language.js /tmp/nphunter-public/
           cp -R assets locales /tmp/nphunter-public/
           aws s3 sync /tmp/nphunter-public/ "s3://${S3_BUCKET}/" --delete \
             --cache-control "no-cache, max-age=0, must-revalidate"
