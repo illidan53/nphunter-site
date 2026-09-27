@@ -27,10 +27,15 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm ci --prefix backend
 
       - name: Install Playwright
         run: npx playwright install --with-deps chromium
+
+      - name: Test backend authorization
+        run: node --test tests/backend/*.test.mjs
 
       - name: Test static homepage
         run: npm run test:e2e
@@ -43,19 +48,11 @@ jobs:
 
       - name: Sync to S3
         run: |
-          aws s3 sync . "s3://${S3_BUCKET}/" \
-            --delete \
-            --exclude ".git/*" \
-            --exclude ".github/*" \
-            --exclude "README.md" \
-            --exclude ".gitignore" \
-            --exclude "node_modules/*" \
-            --exclude "package.json" \
-            --exclude "package-lock.json" \
-            --exclude "playwright.config.ts" \
-            --exclude "tests/*" \
-            --exclude "test-results/*" \
-            --exclude "playwright-report/*"
+          mkdir -p /tmp/nphunter-public
+          cp index.html history.html privacy.html language.js projects.js account.js account.css history.js history-language.js /tmp/nphunter-public/
+          cp -R assets locales /tmp/nphunter-public/
+          aws s3 sync /tmp/nphunter-public/ "s3://${S3_BUCKET}/" --delete \
+            --cache-control "no-cache, max-age=0, must-revalidate"
 
       # s3 sync does not update metadata when the file contents are unchanged.
       - name: Require homepage revalidation in browsers
@@ -86,5 +83,5 @@ jobs:
       - name: Verify public homepage entries
         run: npm run test:e2e
         env:
-          NPHUNTER_SITE_BASE_URL: https://nphunter.net
+          NPHUNTER_SITE_BASE_URL: https://nphunter.gg
           NPHUNTER_SITE_VERIFY_TARGETS: "1"

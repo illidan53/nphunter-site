@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="200" viewBox="0 0 480 200" fill="none">
+  <defs>
+    <symbol id="face" viewBox="-60 -60 120 120" overflow="visible">
+      <circle cy="7" r="52" fill="#e2d4c2"/>
+      <circle r="52" fill="#fffdf8" stroke="#dcc9b8" stroke-width="3"/>
+      <circle r="41" stroke="#efe5d8" stroke-width="2"/>
+    </symbol>
+  </defs>
+  <g fill="#eee7dc">
+    <ellipse cx="80" cy="172" rx="48" ry="8"/>
+    <ellipse cx="196" cy="158" rx="48" ry="8"/>
+    <ellipse cx="316" cy="176" rx="30" ry="6"/>
+    <ellipse cx="410" cy="172" rx="48" ry="8"/>
+  </g>
+  <!-- King: white army, outlined figure -->
+  <g transform="translate(80 110) rotate(-8)">
+    <use href="#face" x="-60" y="-60" width="120" height="120"/>
+    <g fill="#fffdf8" stroke="#33385f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0-37V-6M-7-30H7"/>
+      <path d="M-17 11c-11-7-11-23-1-26 7-2 14 2 18 11 4-9 11-13 18-11 10 3 10 19-1 26Z"/>
+      <path d="M-18 11h36v8h-36ZM-23 25h46v7h-46Z"/>
+    </g>
+  </g>
+  <!-- Face-down piece -->
+  <g transform="translate(196 94) rotate(6)">
+    <circle cy="7" r="52" fill="#bcaf9f"/>
+    <circle r="52" fill="#d7cdc0" stroke="#c2b5a5" stroke-width="3"/>
+    <circle r="41" stroke="#cbc0b2" stroke-width="2"/>
+    <path d="M-11-12c0-9 5.5-14 11-14s11 4.5 11 12c0 9.5-11 10-11 20" stroke="#968877" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cy="22" r="4.5" fill="#968877"/>
+  </g>
+  <!-- Piece mid-flip: the front face turns into view, rim still showing -->
+  <g transform="translate(316 102) rotate(-12)">
+    <ellipse cx="8" rx="27" ry="52" fill="#e2d4c2"/>
+    <ellipse rx="27" ry="52" fill="#fffdf8" stroke="#dcc9b8" stroke-width="3"/>
+    <g transform="scale(.52 1)" fill="#33385f">
+      <path d="M-20 13-27-13-15-1l2-20 8 17 5-22 5 22 8-17 2 20 12-12-7 26Z"/>
+      <circle cx="-27" cy="-15" r="5"/><circle cx="-13" cy="-23" r="5"/><circle cy="-27" r="5"/><circle cx="13" cy="-23" r="5"/><circle cx="27" cy="-15" r="5"/>
+      <rect x="-21" y="17" width="42" height="7" rx="3"/>
+      <rect x="-25" y="27" width="50" height="7" rx="3"/>
+    </g>
+  </g>
+  <path d="M234 40c20-22 56-24 76-6" stroke="#cdb9a2" stroke-width="3.5" stroke-linecap="round" stroke-dasharray=".5 10"/>
+  <path d="m358 26 3 9 9 3-9 3-3 9-3-9-9-3 9-3Z" fill="#885020"/>
+  <!-- Knight: black army, filled figure -->
+  <g transform="translate(410 110) rotate(8)">
+    <use href="#face" x="-60" y="-60" width="120" height="120"/>
+    <path d="M-12 24c1-10 5-17 12-22-8 1-16 2-21-3-4-4-4-9-1-13L-8-28c3-4 7-7 11-8l2-7 5 7c10 5 16 16 15 30-1 12-3 21-5 30Z" fill="#33385f" stroke="#33385f" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="-2" cy="-19" r="2.8" fill="#fffdf8"/>
+    <rect x="-22" y="25" width="44" height="7" rx="3.5" fill="#33385f"/>
+  </g>
+</svg>

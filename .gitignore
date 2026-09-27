@@ -1,3 +1,8 @@
 node_modules/
 test-results/
 playwright-report/
+
+.aws-sam/
+.env*
+infra/parameters*.json
+infra/*distribution*.json

@@ -9,15 +9,19 @@
     document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
     document.title = messages['page.title'];
     document.querySelector('meta[name="description"]').content = messages['page.description'];
+    // A missing key (e.g. a stale cached locale file) keeps the current copy instead of blanking it.
     document.querySelectorAll('[data-i18n]').forEach(element => {
-      element.textContent = messages[element.dataset.i18n];
+      const text = messages[element.dataset.i18n];
+      if (text !== undefined) element.textContent = text;
     });
     for (const attribute of ['aria-label', 'alt']) {
       document.querySelectorAll(`[data-i18n-${attribute}]`).forEach(element => {
-        element.setAttribute(attribute, messages[element.getAttribute(`data-i18n-${attribute}`)]);
+        const text = messages[element.getAttribute(`data-i18n-${attribute}`)];
+        if (text !== undefined) element.setAttribute(attribute, text);
       });
     }
     selector.value = language;
+    window.dispatchEvent(new Event('nphunter-language'));
   }
 
   let language = 'zh';

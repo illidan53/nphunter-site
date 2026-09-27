@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="NPHunter 管理员访问历史">
+  <title>历史记录 · NPHunter</title>
+  <link rel="stylesheet" href="account.css">
+</head>
+<body class="history-page">
+  <div class="history-shell">
+    <header class="history-header"><a href="./" data-copy="home">← 返回首页</a><select id="language" aria-label="选择语言"><option value="zh">中文</option><option value="en">English</option></select></header>
+    <main>
+      <h1 data-copy="title">访问历史</h1>
+      <p class="history-muted" data-copy="subtitle">管理员专属 · 访问趋势与访客明细</p>
+      <p id="access-status" class="history-status" role="status" aria-live="polite">正在验证访问权限…</p>
+      <section id="dashboard" hidden>
+        <div class="history-controls"><label><span data-copy="range">趋势范围</span><select id="range"><option value="7">7 天 / days</option><option value="30" selected>30 天 / days</option><option value="90">90 天 / days</option></select></label><button id="refresh" type="button" data-copy="refresh">刷新趋势</button></div>
+        <div class="history-stats"><div class="history-stat"><span data-copy="views">页面访问</span><strong id="total-views">—</strong></div><div class="history-stat"><span data-copy="unique">去重访客</span><strong id="total-unique">—</strong></div><div class="history-stat"><span data-copy="guests">去重游客</span><strong id="total-guests">—</strong></div></div>
+        <section class="history-panel" aria-labelledby="trend-title"><h2 id="trend-title" data-copy="trend">每日趋势</h2><p class="history-muted" data-copy="legend">蓝线：页面访问 · 绿线：去重访客 · 所有日期采用 UTC</p><p id="trend-status" role="status"></p><svg id="trend-chart" class="history-chart" viewBox="0 0 960 260" role="img" aria-label="每日访问趋势"></svg><details><summary data-copy="daily">查看每日数据</summary><div class="table-scroll"><table><thead><tr><th data-copy="date">日期（UTC）</th><th data-copy="views">页面访问</th><th data-copy="unique">去重访客</th><th data-copy="guests">去重游客</th></tr></thead><tbody id="daily-rows"></tbody></table></div></details></section>
+        <section class="history-panel" aria-labelledby="records-title"><h2 id="records-title" data-copy="records">访客明细</h2><div class="history-controls"><label><span data-copy="date">日期（UTC）</span><input id="record-day" type="date" required></label><button id="load-records" type="button" data-copy="query">查询</button></div><p id="records-status" role="status"></p><div class="table-scroll" tabindex="0" aria-label="访客记录"><table><caption data-copy="recordNote">按时间倒序；签名不等于真实身份，国家为网络位置估计。</caption><thead><tr><th data-copy="time">时间（UTC）</th><th data-copy="role">身份</th><th data-copy="account">账号</th><th>IP</th><th data-copy="country">国家</th><th data-copy="path">页面</th><th data-copy="signature">浏览器签名</th><th data-copy="browser">浏览器 / 语言</th></tr></thead><tbody id="visit-rows"></tbody></table></div><button id="load-more" class="load-more" hidden data-copy="more">加载更多</button></section>
+        <p class="history-muted" data-copy="limitations">仅统计接入后的页面访问；屏蔽脚本的访问不会记录。游客按浏览器签名近似去重，登录用户按账号去重；登录前后可能计为两位访客。默认保留 90 天。</p>
+      </section>
+    </main>
+  </div>
+  <script src="history-language.js"></script>
+  <script src="account.js"></script>
+  <script src="history.js"></script>
+</body>
+</html>

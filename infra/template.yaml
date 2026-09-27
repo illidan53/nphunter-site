@@ -1,0 +1,109 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: NPHunter private authentication and visitor analytics API
+Parameters:
+  SiteOrigin:
+    Type: String
+    Default: https://nphunter.gg
+    AllowedPattern: 'https://[a-zA-Z0-9.-]+'
+  OriginSecret:
+    Type: String
+    NoEcho: true
+    MinLength: 32
+  GoogleClientId:
+    Type: String
+    Default: ''
+  GoogleClientSecret:
+    Type: String
+    NoEcho: true
+    Default: ''
+  MicrosoftClientId:
+    Type: String
+    Default: ''
+  MicrosoftClientSecret:
+    Type: String
+    NoEcho: true
+    Default: ''
+  AdminGoogleEmail:
+    Type: String
+    Default: ''
+    Description: Verified Google mailbox of the administrator; empty means no Google administrator
+  AdminMicrosoftEmail:
+    Type: String
+    Default: ''
+    Description: Personal Microsoft account mailbox (from Graph) of the administrator; empty means none
+  RetentionDays:
+    Type: Number
+    Default: 90
+    MinValue: 1
+    MaxValue: 365
+Resources:
+  Records:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      TimeToLiveSpecification:
+        AttributeName: expiresAt
+        Enabled: true
+      SSESpecification:
+        SSEEnabled: true
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+  Api:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 100
+        ThrottlingRateLimit: 50
+  Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../backend/
+      Handler: index.handler
+      Runtime: nodejs22.x
+      Timeout: 25
+      MemorySize: 256
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref Records
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref Records
+          SITE_ORIGIN: !Ref SiteOrigin
+          ORIGIN_SECRET: !Ref OriginSecret
+          GOOGLE_CLIENT_ID: !Ref GoogleClientId
+          GOOGLE_CLIENT_SECRET: !Ref GoogleClientSecret
+          MICROSOFT_CLIENT_ID: !Ref MicrosoftClientId
+          MICROSOFT_CLIENT_SECRET: !Ref MicrosoftClientSecret
+          ADMIN_GOOGLE_EMAIL: !Ref AdminGoogleEmail
+          ADMIN_MICROSOFT_EMAIL: !Ref AdminMicrosoftEmail
+          RETENTION_DAYS: !Ref RetentionDays
+      Events:
+        ApiRoute:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Path: /api/{proxy+}
+            Method: ANY
+  ApiLogs:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${Function}
+      RetentionInDays: 14
+Outputs:
+  ApiOriginDomain:
+    Value: !Sub ${Api}.execute-api.${AWS::Region}.amazonaws.com
+  RecordsTable:
+    Value: !Ref Records
