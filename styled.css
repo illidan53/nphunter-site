@@ -100,6 +100,7 @@
 :root[data-style="styled"] :is(.crown, [data-project="crown"]) { --p-glow:rgba(255, 150, 72, .5); --p-accent:#ffc996; --screen:radial-gradient(90% 95% at 50% 38%, #ffd19c 0%, #e98a45 48%, #8a3a14 100%); }
 :root[data-style="styled"] :is(.spring, [data-project="spring"]) { --p-glow:rgba(176, 228, 92, .45); --p-accent:#d6f290; --screen:radial-gradient(90% 95% at 50% 38%, #e9f7a4 0%, #9fcb52 50%, #416b1b 100%); }
 :root[data-style="styled"] :is(.finance, [data-project="finance"]) { --p-glow:rgba(56, 220, 186, .48); --p-accent:#95f3dc; --screen:radial-gradient(90% 95% at 50% 38%, #aaf6e2 0%, #36c09f 50%, #0d5b4d 100%); }
+:root[data-style="styled"] :is(.network, [data-project="network"]) { --p-glow:rgba(88, 150, 255, .55); --p-accent:#b3cdff; --screen:radial-gradient(90% 95% at 50% 38%, #b4d0ff 0%, #5a88ea 48%, #172f78 100%); }
 
 /* Glass card: side cards turn toward the center, shrink and dim */
 :root[data-style="styled"] .slide-inner { position:relative; flex:1; display:flex; flex-direction:column; min-width:0; transform:perspective(1200px) translateX(calc(var(--shift, 0) * var(--slide) * -.12)) rotateY(calc(var(--shift, 0) * -24deg)) scale(calc(.84 + .16 * var(--focus))); opacity:calc(.5 + .5 * var(--focus)); will-change:transform, opacity; }
@@ -113,7 +114,7 @@
 :root[data-style="styled"] .project-screen::after { content:"NPH-" counter(project, decimal-leading-zero); position:absolute; top:12px; left:14px; z-index:3; color:rgba(255, 255, 255, .8); font:600 11px/1 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing:1.5px; }
 :root[data-style="styled"] .project-screen :is(.featured-art, .card-art) { position:absolute; top:50%; left:50%; right:auto; z-index:1; width:var(--art-w); max-width:none; height:auto; margin:0; transform:translate(-50%, -50%); filter:drop-shadow(0 14px 14px rgba(10, 8, 40, .35)); pointer-events:none; transition:scale .35s ease; }
 :root[data-style="styled"] .points .project-screen { --art-w:min(84%, calc(var(--screen-h) * 2.1)); }
-:root[data-style="styled"] .crown .project-screen { --art-w:min(80%, calc(var(--screen-h) * 2)); }
+:root[data-style="styled"] :is(.crown, .network) .project-screen { --art-w:min(80%, calc(var(--screen-h) * 2)); }
 :root[data-style="styled"] :is(.spring, .finance) .project-screen { --art-w:min(48%, calc(var(--screen-h) * .86)); }
 :root[data-style="styled"] .spring .card-art { color:#34470f; }
 :root[data-style="styled"] .finance .card-art { color:#0b4a3e; }

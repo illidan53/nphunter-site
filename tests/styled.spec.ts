@@ -34,18 +34,18 @@ test('styled is the default look and the arrows bring projects in one at a time'
   expect(await centeredCard(page)).toBe('24 Points Game');
   await expect(previous).toHaveAttribute('aria-disabled', 'true');
 
-  for (const title of ['Crownflip', 'Spring Fields', 'Finance Workbench']) {
+  for (const title of ['Crownflip', 'Spring Fields', 'Finance Workbench', 'Global Network']) {
     await next.click();
     await expect(dock.getByRole('button', { name: title })).toHaveAttribute('aria-current', 'true');
     await expect.poll(() => centeredCard(page)).toBe(title);
   }
   await expect(next).toHaveAttribute('aria-disabled', 'true');
-  await expect(page.locator('#carousel-status')).toHaveText('Finance Workbench, 4 of 4');
+  await expect(page.locator('#carousel-status')).toHaveText('Global Network, 5 of 5');
   // A dimmed arrow stays focusable and clickable, but does nothing at the end of the row.
   await next.click({ force: true });
-  await expect.poll(() => centeredCard(page)).toBe('Finance Workbench');
+  await expect.poll(() => centeredCard(page)).toBe('Global Network');
   await previous.click();
-  await expect.poll(() => centeredCard(page)).toBe('Spring Fields');
+  await expect.poll(() => centeredCard(page)).toBe('Finance Workbench');
 });
 
 test('the dock and arrow keys jump straight to a project', async ({ page }) => {
@@ -96,6 +96,11 @@ test('the normal look brings back the card grid and is remembered', async ({ pag
   const finance = (await page.locator('.finance').boundingBox())!;
   expect(finance.y).toBe(spring.y);
   expect(finance.x).toBeGreaterThan(spring.x + spring.width);
+  // Global Network is a full-width featured card on its own row below them.
+  const network = (await page.locator('.network').boundingBox())!;
+  expect(network.y).toBeGreaterThan(finance.y + finance.height);
+  expect(network.x).toBe(spring.x);
+  expect(network.width).toBeGreaterThan(finance.x + finance.width - spring.x - 1);
 
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-style', 'normal');

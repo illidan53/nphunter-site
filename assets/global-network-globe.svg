@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="200" viewBox="0 0 480 200" fill="none">
+  <defs>
+    <radialGradient id="ocean" cx="38%" cy="32%" r="75%">
+      <stop offset="0" stop-color="#2b5596"/>
+      <stop offset=".65" stop-color="#15305c"/>
+      <stop offset="1" stop-color="#0b1a36"/>
+    </radialGradient>
+    <clipPath id="globe"><circle cx="196" cy="100" r="82"/></clipPath>
+  </defs>
+  <!-- Ground shadows: translucent so they read on light cards and lit screens alike -->
+  <g fill="#1d3570" fill-opacity=".16">
+    <ellipse cx="196" cy="191" rx="72" ry="7"/>
+    <ellipse cx="410" cy="170" rx="44" ry="7"/>
+  </g>
+  <!-- Atmosphere -->
+  <circle cx="196" cy="100" r="90" stroke="#7fb0ff" stroke-opacity=".35" stroke-width="6"/>
+  <!-- Globe: ocean, graticule, land -->
+  <circle cx="196" cy="100" r="82" fill="url(#ocean)"/>
+  <g clip-path="url(#globe)">
+    <g stroke="#ffffff" stroke-opacity=".13" stroke-width="1.5">
+      <ellipse cx="196" cy="100" rx="28" ry="82"/>
+      <ellipse cx="196" cy="100" rx="58" ry="82"/>
+      <path d="M100 60h192M100 100h192M100 140h192"/>
+    </g>
+    <g fill="#4d80c9">
+      <path d="M150 42c22-13 64-15 92-3 15 6 22 19 11 28-13 10-32 4-43 15-9 9-28 11-41 2-15-10-32-28-19-42Z"/>
+      <path d="M200 104c15-4 28 4 28 19 0 17-13 32-21 42-7 6-13-2-15-13-3-15-9-21-7-34 1-9 7-13 15-14Z"/>
+      <path d="M114 66c9-6 18 0 16 11-2 10-11 15-9 28 2 11 11 19 7 32-5 11-15 9-20-2-6-15-4-32-2-47 1-11 2-17 8-22Z"/>
+      <path d="M262 140c9-4 21-2 23 6 2 9-8 13-17 11-9-2-13-13-6-17Z"/>
+    </g>
+    <g fill="#79a6e6">
+      <path d="M170 46c10-5 24-6 32-1 5 3 2 8-5 9-9 1-18 3-26-1-4-2-4-5-1-7Z"/>
+    </g>
+  </g>
+  <circle cx="196" cy="100" r="82" stroke="#0b1a36" stroke-width="3"/>
+  <!-- Short route across the globe -->
+  <path d="M160 70c26 16 58 46 104 74" stroke="#ffffff" stroke-opacity=".55" stroke-width="7" stroke-linecap="round"/>
+  <path d="M160 70c26 16 58 46 104 74" stroke="#fbbf24" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="264" cy="144" r="5.5" fill="#fbbf24" stroke="#0b1a36" stroke-width="2"/>
+  <!-- Long route out to the data center -->
+  <path d="M160 70C212 0 322 2 372 84" stroke="#ffffff" stroke-opacity=".6" stroke-width="8" stroke-linecap="round"/>
+  <path d="M160 70C212 0 322 2 372 84" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-dasharray="11 8"/>
+  <!-- Origin: the clicked point, with ping rings -->
+  <circle cx="160" cy="70" r="19" stroke="#ffffff" stroke-opacity=".3" stroke-width="2"/>
+  <circle cx="160" cy="70" r="12" stroke="#ffffff" stroke-opacity=".65" stroke-width="2"/>
+  <circle cx="160" cy="70" r="6" fill="#ffffff" stroke="#0b1a36" stroke-width="2.5"/>
+  <!-- Data center rack, lights in cloud-provider colors -->
+  <g stroke="#0b1a36" stroke-width="3">
+    <rect x="372" y="70" width="74" height="24" rx="6" fill="#f4f7ff"/>
+    <rect x="372" y="98" width="74" height="24" rx="6" fill="#f4f7ff"/>
+    <rect x="372" y="126" width="74" height="24" rx="6" fill="#f4f7ff"/>
+  </g>
+  <g>
+    <circle cx="387" cy="82" r="4.5" fill="#ff9900"/>
+    <circle cx="387" cy="110" r="4.5" fill="#22c55e"/>
+    <circle cx="387" cy="138" r="4.5" fill="#3b82f6"/>
+  </g>
+  <path d="M402 82h32M402 110h32M402 138h32" stroke="#9fb3d9" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

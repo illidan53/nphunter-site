@@ -21,8 +21,12 @@ test("homepage exposes all published project entries", async ({ page }) => {
     "href",
     "https://finance.nphunter.net"
   );
+  await expect(page.getByRole("link", { name: "Open Global Network" })).toHaveAttribute(
+    "href",
+    "https://global-network.nphunter.gg"
+  );
   // Unfinished games and the private Spring Fields build are not linked from the hub.
-  await expect(page.locator("a.project")).toHaveCount(3);
+  await expect(page.locator("a.project")).toHaveCount(4);
   await expect(page.locator('a[href*="ggame."], a[href*="cgame."], a[href*="tgame."]')).toHaveCount(0);
 
   if (process.env.NPHUNTER_SITE_VERIFY_TARGETS === "1") {
@@ -31,6 +35,8 @@ test("homepage exposes all published project entries", async ({ page }) => {
     await page.goto("https://finance.nphunter.net");
     await expect(page).toHaveTitle("Stock Workbench");
     await expect(page.getByRole("heading", { name: "Stock Workbench" })).toBeVisible();
+    await page.goto("https://global-network.nphunter.gg");
+    await expect(page).toHaveTitle("Net Globe · 云数据中心网络地球");
   }
 });
 

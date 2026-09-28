@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#060818">
-  <meta name="description" content="NPHunter 的个人项目小站。探索 24 点游戏、暗冠棋、春野逐鹿和金融工作台。">
+  <meta name="description" content="NPHunter 的个人项目小站。探索 24 点游戏、暗冠棋、春野逐鹿、金融工作台和全球网络地球。">
   <title>nphunter — 好奇心的游乐场</title>
   <script>
     // Apply a saved interface style before the first paint. Styled is the default.
@@ -51,6 +51,7 @@
     .project[data-dialog] { cursor:pointer; }
     .project:has(.cta:focus-visible) { outline:3px solid var(--blue); outline-offset:6px; }
     .finance { --surface:var(--finance-bg); --accent:var(--finance-ink); }
+    .network { --surface:#f3f7ff; --accent:#2c4c93; border-color:#d3def5; }
     .project-top { display:flex; align-items:center; justify-content:space-between; color:var(--accent); font-size:12px; font-weight:750; letter-spacing:1.6px; }
     .project-status { display:inline-flex; align-items:center; gap:6px; padding:6px 13px; border:1px solid var(--status-ink); border-radius:8px; background:var(--status-bg); color:var(--status-ink); font-size:14px; font-weight:800; letter-spacing:1px; box-shadow:2px 2px 0 var(--status-ink); }
     .project-content { position:relative; z-index:1; width:70%; margin-top:24px; }
@@ -154,6 +155,14 @@
               <div class="project-bottom"><span class="cta"><span data-i18n="finance.cta">打开工作台</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span><span class="domain">finance.nphunter.net</span></div>
             </div>
           </a>
+          <a class="project featured network" href="https://global-network.nphunter.gg" aria-label="打开全球网络地球" data-i18n-aria-label="network.link">
+            <div class="slide-inner">
+              <div class="project-top"><span><span data-i18n="category.5">05 / 网络</span></span></div>
+              <div class="project-content"><h3><span data-i18n="network.title">全球网络地球</span></h3><p><span data-i18n="network.intro">点地球上任意一处，看附近的云机房和延迟。</span><br><span data-i18n="network.modes">数据走哪条海缆、每一跳多远，一路画给你看。</span></p></div>
+              <span class="project-screen"><img class="featured-art" src="assets/global-network-globe.svg" width="480" height="200" alt="地球上从一点出发的海缆路线，连到一座亮着灯的云机房机架" data-i18n-alt="network.alt"></span>
+              <div class="project-bottom"><span class="cta"><span data-i18n="network.cta">转动地球</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
+            </div>
+          </a>
         </div>
         <nav class="project-dock" aria-label="选择项目" data-i18n-aria-label="dock.label">
           <button class="carousel-arrow carousel-prev" type="button" aria-controls="project-track" aria-label="上一个项目" data-i18n-aria-label="carousel.prev"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
@@ -162,6 +171,7 @@
             <li><button type="button" data-project="crown" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="crown.title">暗冠棋</span></button></li>
             <li><button type="button" data-project="spring" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="spring.title">春野逐鹿</span></button></li>
             <li><button type="button" data-project="finance" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="finance.title">金融工作台</span></button></li>
+            <li><button type="button" data-project="network" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="network.title">全球网络地球</span></button></li>
           </ol>
           <button class="carousel-arrow carousel-next" type="button" aria-controls="project-track" aria-label="下一个项目" data-i18n-aria-label="carousel.next"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
         </nav>
