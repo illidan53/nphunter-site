@@ -40,7 +40,8 @@ test("homepage exposes all published project entries", async ({ page }) => {
     await expect(page).toHaveTitle("Stock Workbench");
     await expect(page.getByRole("heading", { name: "Stock Workbench" })).toBeVisible();
     await page.goto("https://global-network.nphunter.gg");
-    await expect(page).toHaveTitle("Net Globe · 云数据中心网络地球");
+    // Global Network follows the browser language, so its title may be Chinese or English.
+    await expect(page).toHaveTitle(/^Net Globe · /);
     await page.goto("https://k8s-game.nphunter.gg");
     await expect(page).toHaveTitle("Kube 游乐场");
   }
