@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="200" viewBox="0 0 480 200" fill="none">
+  <!-- Ground shadows: translucent so they read on light cards and lit screens alike -->
+  <g fill="#1d3570" fill-opacity=".16">
+    <ellipse cx="118" cy="191" rx="66" ry="7"/>
+    <ellipse cx="338" cy="186" rx="112" ry="7"/>
+  </g>
+  <!-- Helm wheel -->
+  <circle cx="118" cy="98" r="76" stroke="#7fb0ff" stroke-opacity=".35" stroke-width="6"/>
+  <circle cx="118" cy="98" r="68" fill="#326ce5" stroke="#0b1a36" stroke-width="3"/>
+  <g stroke="#ffffff" stroke-width="7" stroke-linecap="round">
+    <path d="M118.0 85.0L118.0 48.0M128.2 89.9L157.1 66.8M130.7 100.9L166.7 109.1M123.6 109.7L139.7 143.0M112.4 109.7L96.3 143.0M105.3 100.9L69.3 109.1M107.8 89.9L78.9 66.8"/>
+  </g>
+  <circle cx="118" cy="98" r="36" stroke="#ffffff" stroke-width="7"/>
+  <g fill="#ffffff" stroke="#0b1a36" stroke-width="2.5">
+    <circle cx="118.0" cy="41.0" r="6.5"/>
+    <circle cx="162.6" cy="62.5" r="6.5"/>
+    <circle cx="173.6" cy="110.7" r="6.5"/>
+    <circle cx="142.7" cy="149.4" r="6.5"/>
+    <circle cx="93.3" cy="149.4" r="6.5"/>
+    <circle cx="62.4" cy="110.7" r="6.5"/>
+    <circle cx="73.4" cy="62.5" r="6.5"/>
+    <circle cx="118" cy="98" r="12"/>
+  </g>
+  <!-- A pod on its way from the scheduler to the node -->
+  <path d="M170 52C196 14 238 8 270 20" stroke="#ffffff" stroke-opacity=".6" stroke-width="7" stroke-linecap="round"/>
+  <path d="M170 52C196 14 238 8 270 20" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="9 7"/>
+  <rect x="270" y="8" width="38" height="22" rx="5" fill="#34d399" stroke="#0b1a36" stroke-width="2.5"/>
+  <!-- Node packed with pods -->
+  <rect x="228" y="42" width="218" height="130" rx="14" fill="#f4f7ff" stroke="#0b1a36" stroke-width="3"/>
+  <circle cx="246" cy="60" r="4.5" fill="#22c55e"/>
+  <path d="M258 60h54" stroke="#9fb3d9" stroke-width="3.5" stroke-linecap="round"/>
+  <g stroke="#0b1a36" stroke-width="2.5">
+    <rect x="242" y="74" width="60" height="24" rx="5" fill="#60a5fa"/>
+    <rect x="308" y="74" width="40" height="24" rx="5" fill="#34d399"/>
+    <rect x="354" y="74" width="76" height="24" rx="5" fill="#a78bfa"/>
+    <rect x="242" y="104" width="90" height="24" rx="5" fill="#f59e0b"/>
+    <rect x="338" y="104" width="44" height="24" rx="5" fill="#60a5fa"/>
+  </g>
+  <!-- Memory: usage bar pushing past the limit line -->
+  <rect x="242" y="140" width="188" height="16" rx="8" fill="#dbe4f5" stroke="#0b1a36" stroke-width="2.5"/>
+  <rect x="244" y="142" width="170" height="12" rx="6" fill="#f472b6"/>
+  <path d="M404 134v28" stroke="#ef4444" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- The container that went over its limit: OOMKilled -->
+  <path d="M408 92l7 13 14-5-6 13 14 7-14 5 5 14-13-6-7 13-6-13-14 6 5-14-14-5 14-7-6-13 14 5Z" fill="#fbbf24" stroke="#0b1a36" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="409" cy="117" r="7" fill="#ef4444"/>
+  <g fill="#fbbf24" stroke="#0b1a36" stroke-width="2">
+    <rect x="440" y="78" width="10" height="10" rx="2" transform="rotate(20 445 83)"/>
+    <rect x="452" y="112" width="8" height="8" rx="2" transform="rotate(-15 456 116)"/>
+  </g>
+</svg>

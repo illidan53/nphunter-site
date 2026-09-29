@@ -34,18 +34,18 @@ test('styled is the default look and the arrows bring projects in one at a time'
   expect(await centeredCard(page)).toBe('24 Points Game');
   await expect(previous).toHaveAttribute('aria-disabled', 'true');
 
-  for (const title of ['Crownflip', 'Spring Fields', 'Finance Workbench', 'Global Network']) {
+  for (const title of ['Crownflip', 'Spring Fields', 'Finance Workbench', 'Global Network', 'Kube Playground']) {
     await next.click();
     await expect(dock.getByRole('button', { name: title })).toHaveAttribute('aria-current', 'true');
     await expect.poll(() => centeredCard(page)).toBe(title);
   }
   await expect(next).toHaveAttribute('aria-disabled', 'true');
-  await expect(page.locator('#carousel-status')).toHaveText('Global Network, 5 of 5');
+  await expect(page.locator('#carousel-status')).toHaveText('Kube Playground, 6 of 6');
   // A dimmed arrow stays focusable and clickable, but does nothing at the end of the row.
   await next.click({ force: true });
-  await expect.poll(() => centeredCard(page)).toBe('Global Network');
+  await expect.poll(() => centeredCard(page)).toBe('Kube Playground');
   await previous.click();
-  await expect.poll(() => centeredCard(page)).toBe('Finance Workbench');
+  await expect.poll(() => centeredCard(page)).toBe('Global Network');
 });
 
 test('the dock and arrow keys jump straight to a project', async ({ page }) => {
@@ -101,6 +101,11 @@ test('the normal look brings back the card grid and is remembered', async ({ pag
   expect(network.y).toBeGreaterThan(finance.y + finance.height);
   expect(network.x).toBe(spring.x);
   expect(network.width).toBeGreaterThan(finance.x + finance.width - spring.x - 1);
+  // Kube Playground follows as another full-width featured card.
+  const kube = (await page.locator('.kube').boundingBox())!;
+  expect(kube.y).toBeGreaterThan(network.y + network.height);
+  expect(kube.x).toBe(network.x);
+  expect(kube.width).toBe(network.width);
 
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-style', 'normal');

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#060818">
-  <meta name="description" content="NPHunter 的个人项目小站。探索 24 点游戏、暗冠棋、春野逐鹿、金融工作台和全球网络地球。">
+  <meta name="description" content="NPHunter 的个人项目小站。探索 24 点游戏、暗冠棋、春野逐鹿、金融工作台、全球网络地球和 Kube 游乐场。">
   <title>nphunter — 好奇心的游乐场</title>
   <script>
     // Apply a saved interface style before the first paint. Styled is the default.
@@ -52,6 +52,7 @@
     .project:has(.cta:focus-visible) { outline:3px solid var(--blue); outline-offset:6px; }
     .finance { --surface:var(--finance-bg); --accent:var(--finance-ink); }
     .network { --surface:#f3f7ff; --accent:#2c4c93; border-color:#d3def5; }
+    .kube { --surface:#f5f3ff; --accent:#4a3d9c; border-color:#ddd6f5; }
     .project-top { display:flex; align-items:center; justify-content:space-between; color:var(--accent); font-size:12px; font-weight:750; letter-spacing:1.6px; }
     .project-status { display:inline-flex; align-items:center; gap:6px; padding:6px 13px; border:1px solid var(--status-ink); border-radius:8px; background:var(--status-bg); color:var(--status-ink); font-size:14px; font-weight:800; letter-spacing:1px; box-shadow:2px 2px 0 var(--status-ink); }
     .project-content { position:relative; z-index:1; width:70%; margin-top:24px; }
@@ -163,6 +164,14 @@
               <div class="project-bottom"><span class="cta"><span data-i18n="network.cta">转动地球</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
             </div>
           </a>
+          <a class="project featured kube" href="https://k8s-game.nphunter.gg" aria-label="打开 Kube 游乐场" data-i18n-aria-label="kube.link">
+            <div class="slide-inner">
+              <div class="project-top"><span><span data-i18n="category.6">06 / 学习</span></span></div>
+              <div class="project-content"><h3><span data-i18n="kube.title">Kube 游乐场</span></h3><p><span data-i18n="kube.intro">用小游戏理解 Kubernetes：调度、OOM、滚动更新。</span><br><span data-i18n="kube.modes">再亲手写一个 Operator 的 Reconcile。</span></p></div>
+              <span class="project-screen"><img class="featured-art" src="assets/kube-playground.svg" width="480" height="200" alt="舵轮旁一台装满 Pod 的节点，一个超出内存上限的容器正在爆开" data-i18n-alt="kube.alt"></span>
+              <div class="project-bottom"><span class="cta"><span data-i18n="kube.cta">开始闯关</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
+            </div>
+          </a>
         </div>
         <nav class="project-dock" aria-label="选择项目" data-i18n-aria-label="dock.label">
           <button class="carousel-arrow carousel-prev" type="button" aria-controls="project-track" aria-label="上一个项目" data-i18n-aria-label="carousel.prev"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
@@ -172,6 +181,7 @@
             <li><button type="button" data-project="spring" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="spring.title">春野逐鹿</span></button></li>
             <li><button type="button" data-project="finance" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="finance.title">金融工作台</span></button></li>
             <li><button type="button" data-project="network" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="network.title">全球网络地球</span></button></li>
+            <li><button type="button" data-project="kube" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="kube.title">Kube 游乐场</span></button></li>
           </ol>
           <button class="carousel-arrow carousel-next" type="button" aria-controls="project-track" aria-label="下一个项目" data-i18n-aria-label="carousel.next"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
         </nav>

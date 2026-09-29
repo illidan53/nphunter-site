@@ -25,8 +25,12 @@ test("homepage exposes all published project entries", async ({ page }) => {
     "href",
     "https://global-network.nphunter.gg"
   );
+  await expect(page.getByRole("link", { name: "Open Kube Playground" })).toHaveAttribute(
+    "href",
+    "https://k8s-game.nphunter.gg"
+  );
   // Unfinished games and the private Spring Fields build are not linked from the hub.
-  await expect(page.locator("a.project")).toHaveCount(4);
+  await expect(page.locator("a.project")).toHaveCount(5);
   await expect(page.locator('a[href*="ggame."], a[href*="cgame."], a[href*="tgame."]')).toHaveCount(0);
 
   if (process.env.NPHUNTER_SITE_VERIFY_TARGETS === "1") {
@@ -37,6 +41,8 @@ test("homepage exposes all published project entries", async ({ page }) => {
     await expect(page.getByRole("heading", { name: "Stock Workbench" })).toBeVisible();
     await page.goto("https://global-network.nphunter.gg");
     await expect(page).toHaveTitle("Net Globe · 云数据中心网络地球");
+    await page.goto("https://k8s-game.nphunter.gg");
+    await expect(page).toHaveTitle("Kube 游乐场");
   }
 });
 
