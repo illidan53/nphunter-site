@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="200" viewBox="0 0 480 200" fill="none">
+  <defs>
+    <clipPath id="paper"><rect x="38" y="22" width="404" height="150"/></clipPath>
+    <!-- One advancing soldier, spear lowered toward the shrine -->
+    <symbol id="foe" viewBox="-20 -40 40 44" overflow="visible">
+      <path d="M-16-30 6-6" stroke="#231d1a" stroke-width="2" stroke-linecap="round"/>
+      <circle cy="-27" r="4.6" fill="#231d1a"/>
+      <path d="M-5-22h10l3 14-3 2 3 9h-4l-4-8-4 8h-4l3-9-3-2Z" fill="#231d1a"/>
+    </symbol>
+  </defs>
+  <!-- Ground shadow: translucent so it reads on light cards and lit screens alike -->
+  <ellipse cx="240" cy="189" rx="196" ry="7" fill="#3a1a1a" fill-opacity=".16"/>
+  <!-- Handscroll: paper between two wooden rollers -->
+  <rect x="38" y="22" width="404" height="150" fill="#f6efe2"/>
+  <g clip-path="url(#paper)">
+    <circle cx="388" cy="56" r="17" fill="#ddd2c1"/>
+    <path d="M38 118c26-14 40-38 64-44 22-6 30 20 52 14 26-8 34-46 62-48 30-2 40 34 70 38 26 4 40-20 66-18 30 2 46 26 90 30v82H38Z" fill="#e6ddcd"/>
+    <path d="M38 142c34-6 52-24 80-24 30 0 42 18 76 14 34-4 50-22 84-20 36 2 54 22 92 20 30-2 50-8 72-6v46H38Z" fill="#d6cbb8"/>
+    <path d="M44 160c90-8 220 4 392-6" stroke="#231d1a" stroke-opacity=".35" stroke-width="3" stroke-linecap="round"/>
+    <!-- The enemy column, nearest at the front -->
+    <g opacity=".45">
+      <use href="#foe" x="384" y="86" width="22" height="24"/>
+      <use href="#foe" x="406" y="88" width="22" height="24"/>
+      <use href="#foe" x="424" y="84" width="22" height="24"/>
+      <path d="M414 84V62l14 4-14 6" stroke="#231d1a" stroke-width="1.6" stroke-linejoin="round"/>
+    </g>
+    <g opacity=".75">
+      <use href="#foe" x="352" y="104" width="30" height="33"/>
+      <use href="#foe" x="378" y="108" width="30" height="33"/>
+      <use href="#foe" x="404" y="102" width="30" height="33"/>
+      <path d="M396 106V74l20 6-20 8" stroke="#231d1a" stroke-width="2" stroke-linejoin="round"/>
+    </g>
+    <use href="#foe" x="320" y="122" width="40" height="44"/>
+    <use href="#foe" x="354" y="126" width="40" height="44"/>
+    <use href="#foe" x="390" y="120" width="40" height="44"/>
+  </g>
+  <rect x="38" y="22" width="404" height="150" stroke="#231d1a" stroke-width="3"/>
+  <g fill="#8a5434" stroke="#231d1a" stroke-width="2.5">
+    <rect x="24" y="14" width="16" height="166" rx="6"/>
+    <rect x="440" y="14" width="16" height="166" rx="6"/>
+  </g>
+  <!-- Red seal -->
+  <rect x="54" y="36" width="20" height="24" rx="2.5" fill="#c8402f"/>
+  <path d="M59 42h10M64 42v13M59 49h10M60 55l4-3 4 3" stroke="#f6efe2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- The village shrine under guard -->
+  <ellipse cx="108" cy="154" rx="48" ry="11" stroke="#231d1a" stroke-opacity=".5" stroke-width="2" stroke-dasharray="5 5"/>
+  <rect x="78" y="146" width="60" height="8" rx="2" fill="#e6ddcd" stroke="#231d1a" stroke-width="2.5"/>
+  <rect x="88" y="116" width="40" height="30" fill="#fbf7ef" stroke="#231d1a" stroke-width="2.5"/>
+  <rect x="101" y="128" width="14" height="18" fill="#231d1a"/>
+  <rect x="102" y="119" width="12" height="6" rx="1" fill="#c8402f"/>
+  <path d="M64 114q8 6 20 3h48q12 3 20-3l-16-12q-28-9-56 0Z" fill="#231d1a"/>
+  <path d="M82 99q26-7 52 0" stroke="#231d1a" stroke-width="4" stroke-linecap="round"/>
+  <!-- Swordsman stepping out of the scroll, demon blade raised toward the column -->
+  <g stroke="#231d1a" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M232 70c-14-6-26 2-42-6M232 74c-12 2-22 12-38 10" stroke="#c8402f" stroke-width="4"/>
+    <path d="M228 120 208 146 194 176M246 122l24 20 4 34" stroke-width="10"/>
+    <path d="M188 177h14M270 177h16" stroke-width="6"/>
+    <path d="M240 90 262 104 274 98M250 88 266 100 278 96" stroke-width="7"/>
+  </g>
+  <path d="M236 84c-18 6-32 22-50 26l12 5-16 9h18l-8 11 28-14Z" fill="#231d1a" fill-opacity=".85"/>
+  <path d="M232 82q12-5 24 2l-2 40q-17 5-34-2l-6 10 4-14-10 8 6-14Z" fill="#231d1a"/>
+  <circle cx="240" cy="70" r="11" fill="#231d1a"/>
+  <path d="M234 66h14" stroke="#c8402f" stroke-width="3" stroke-linecap="round"/>
+  <path d="M268 104 284 92" stroke="#231d1a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M286 91 362 37" stroke="#ff4d6d" stroke-opacity=".45" stroke-width="12" stroke-linecap="round"/>
+  <path d="M285 94 364 35 282 89Z" fill="#fbf7ef" stroke="#231d1a" stroke-width="2" stroke-linejoin="round"/>
+  <ellipse cx="284.5" cy="91.5" rx="3" ry="6" transform="rotate(54 284.5 91.5)" fill="#231d1a"/>
+  <g fill="#231d1a">
+    <circle cx="300" cy="62" r="2"/><circle cx="318" cy="56" r="1.5"/><circle cx="372" cy="30" r="2.2"/>
+  </g>
+</svg>

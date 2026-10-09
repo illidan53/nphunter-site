@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 
 const homepageUrl = process.env.NPHUNTER_SITE_BASE_URL ?? `file://${process.cwd()}/index.html`;
 const crownflipUrl = "https://1gp-game-b83051de5d1f07c4-38xd8px29-1gp-studio.vercel.app/";
+const demonBladeUrl = "https://1gp-game-platform.vercel.app/games/dgame-4c17fb47";
 
 test("homepage exposes all published project entries", async ({ page }) => {
   const response = await page.goto(homepageUrl);
@@ -30,8 +31,9 @@ test("homepage exposes all published project entries", async ({ page }) => {
     "href",
     "https://k8s-game.nphunter.gg"
   );
+  await expect(page.getByRole("link", { name: "Play Demon Blade" })).toHaveAttribute("href", demonBladeUrl);
   // Unfinished games and the private Spring Fields build are not linked from the hub.
-  await expect(page.locator("a.project")).toHaveCount(5);
+  await expect(page.locator("a.project")).toHaveCount(6);
   await expect(page.locator('a[href*="ggame."], a[href*="cgame."], a[href*="tgame."]')).toHaveCount(0);
 
   if (process.env.NPHUNTER_SITE_VERIFY_TARGETS === "1") {
@@ -50,6 +52,8 @@ test("homepage exposes all published project entries", async ({ page }) => {
       expect(kubeResponse?.status()).toBe(200);
       await expect(page).toHaveTitle("Kube 游乐场");
     }
+    await page.goto(demonBladeUrl);
+    await expect(page).toHaveTitle(/^妖刀天劫 — 1GP Studio/);
   }
 });
 

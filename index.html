@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#060818">
-  <meta name="description" content="NPHunter 的个人项目小站。探索 24 点游戏、暗冠棋、春野逐鹿、金融工作台、全球网络地球和 Kube 游乐场。">
+  <meta name="description" content="NPHunter 的个人项目小站。探索 24 点游戏、暗冠棋、春野逐鹿、金融工作台、全球网络地球、Kube 游乐场和妖刀天劫。">
   <title>nphunter — 好奇心的游乐场</title>
   <script>
     // Apply a saved interface style before the first paint. Styled is the default.
@@ -53,6 +53,7 @@
     .finance { --surface:var(--finance-bg); --accent:var(--finance-ink); }
     .network { --surface:#f3f7ff; --accent:#2c4c93; border-color:#d3def5; }
     .kube { --surface:#f5f3ff; --accent:#4a3d9c; border-color:#ddd6f5; }
+    .blade { --surface:#fbf7ef; --accent:#8f2d2b; border-color:#ecd8cc; }
     .project-top { display:flex; align-items:center; justify-content:space-between; color:var(--accent); font-size:12px; font-weight:750; letter-spacing:1.6px; }
     .project-status { display:inline-flex; align-items:center; gap:6px; padding:6px 13px; border:1px solid var(--status-ink); border-radius:8px; background:var(--status-bg); color:var(--status-ink); font-size:14px; font-weight:800; letter-spacing:1px; box-shadow:2px 2px 0 var(--status-ink); }
     .project-content { position:relative; z-index:1; width:70%; margin-top:24px; }
@@ -172,6 +173,14 @@
               <div class="project-bottom"><span class="cta"><span data-i18n="kube.cta">开始闯关</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
             </div>
           </a>
+          <a class="project featured blade" href="https://1gp-game-platform.vercel.app/games/dgame-4c17fb47" aria-label="玩妖刀天劫" data-i18n-aria-label="blade.link">
+            <div class="slide-inner">
+              <div class="project-top"><span><span data-i18n="category.7">07 / 游戏</span></span></div>
+              <div class="project-content"><h3><span data-i18n="blade.title">妖刀天劫</span></h3><p><span data-i18n="blade.intro">一人一刀，守住村中祠堂，挡下一波波来袭的敌军。</span><br><span data-i18n="blade.modes">水墨风 RPG 守家，灵感来自魔兽争霸 3 自定义地图。</span></p></div>
+              <span class="project-screen"><img class="featured-art" src="assets/demon-blade.svg" width="480" height="200" alt="水墨画卷前，一名剑客举起泛着红光的妖刀，迎向逼近祠堂的敌军" data-i18n-alt="blade.alt"></span>
+              <div class="project-bottom"><span class="cta"><span data-i18n="blade.cta">拔刀，开始玩</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
+            </div>
+          </a>
         </div>
         <nav class="project-dock" aria-label="选择项目" data-i18n-aria-label="dock.label">
           <button class="carousel-arrow carousel-prev" type="button" aria-controls="project-track" aria-label="上一个项目" data-i18n-aria-label="carousel.prev"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
@@ -182,6 +191,7 @@
             <li><button type="button" data-project="finance" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="finance.title">金融工作台</span></button></li>
             <li><button type="button" data-project="network" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="network.title">全球网络地球</span></button></li>
             <li><button type="button" data-project="kube" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="kube.title">Kube 游乐场</span></button></li>
+            <li><button type="button" data-project="blade" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="blade.title">妖刀天劫</span></button></li>
           </ol>
           <button class="carousel-arrow carousel-next" type="button" aria-controls="project-track" aria-label="下一个项目" data-i18n-aria-label="carousel.next"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
         </nav>

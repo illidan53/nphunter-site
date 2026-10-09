@@ -34,18 +34,18 @@ test('styled is the default look and the arrows bring projects in one at a time'
   expect(await centeredCard(page)).toBe('24 Points Game');
   await expect(previous).toHaveAttribute('aria-disabled', 'true');
 
-  for (const title of ['Crownflip', 'Spring Fields', 'Finance Workbench', 'Global Network', 'Kube Playground']) {
+  for (const title of ['Crownflip', 'Spring Fields', 'Finance Workbench', 'Global Network', 'Kube Playground', 'Demon Blade']) {
     await next.click();
     await expect(dock.getByRole('button', { name: title })).toHaveAttribute('aria-current', 'true');
     await expect.poll(() => centeredCard(page)).toBe(title);
   }
   await expect(next).toHaveAttribute('aria-disabled', 'true');
-  await expect(page.locator('#carousel-status')).toHaveText('Kube Playground, 6 of 6');
+  await expect(page.locator('#carousel-status')).toHaveText('Demon Blade, 7 of 7');
   // A dimmed arrow stays focusable and clickable, but does nothing at the end of the row.
   await next.click({ force: true });
-  await expect.poll(() => centeredCard(page)).toBe('Kube Playground');
+  await expect.poll(() => centeredCard(page)).toBe('Demon Blade');
   await previous.click();
-  await expect.poll(() => centeredCard(page)).toBe('Global Network');
+  await expect.poll(() => centeredCard(page)).toBe('Kube Playground');
 });
 
 test('the dock and arrow keys jump straight to a project', async ({ page }) => {
@@ -106,6 +106,11 @@ test('the normal look brings back the card grid and is remembered', async ({ pag
   expect(kube.y).toBeGreaterThan(network.y + network.height);
   expect(kube.x).toBe(network.x);
   expect(kube.width).toBe(network.width);
+  // Demon Blade closes the grid as a third full-width featured card.
+  const blade = (await page.locator('.blade').boundingBox())!;
+  expect(blade.y).toBeGreaterThan(kube.y + kube.height);
+  expect(blade.x).toBe(kube.x);
+  expect(blade.width).toBe(kube.width);
 
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-style', 'normal');
