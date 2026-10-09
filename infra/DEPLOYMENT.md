@@ -32,3 +32,7 @@ No secret values belong in this file, frontend assets, Git, or test output. Clou
 Administrator mailboxes are the stack parameters `AdminGoogleEmail` and `AdminMicrosoftEmail`; keep them out of this public repository. The Lambda deployed on 2026-09-21 predates these parameters and has the administrators built in, so **the next stack update must set both**, or no one can read history. Admin bindings in DynamoDB are keyed by provider and mailbox, so the same mailboxes keep their existing bindings.
 
 The header now contains the language selector and Sign in / Sign up buttons. Provider choices appear in a dismissible keyboard-accessible dialog; project shortcut links were removed from the header.
+
+### Kube Playground author-only preview (2026-10-02)
+
+The Kube Playground destination now restricts all CloudFront viewer requests to the author's configured exact IP address through `kgame-owner-access`, managed in `kgame/infra`. The homepage remains public and labels the card “仅作者可访问 / Author-only access” in both locales. Destination checks may return either the game (200 for the allowed IP) or the explicit author-only page (403 elsewhere). The homepage test handles both; IP configuration stays in encrypted Pulumi config in the game repository.

@@ -25,6 +25,7 @@ test("homepage exposes all published project entries", async ({ page }) => {
     "href",
     "https://global-network.nphunter.gg"
   );
+  await expect(page.locator(".kube .owner-only")).toHaveText("Author-only access");
   await expect(page.getByRole("link", { name: "Open Kube Playground" })).toHaveAttribute(
     "href",
     "https://k8s-game.nphunter.gg"
@@ -42,8 +43,13 @@ test("homepage exposes all published project entries", async ({ page }) => {
     await page.goto("https://global-network.nphunter.gg");
     // Global Network follows the browser language, so its title may be Chinese or English.
     await expect(page).toHaveTitle(/^Net Globe · /);
-    await page.goto("https://k8s-game.nphunter.gg");
-    await expect(page).toHaveTitle("Kube 游乐场");
+    const kubeResponse = await page.goto("https://k8s-game.nphunter.gg");
+    if (kubeResponse?.status() === 403) {
+      await expect(page.getByRole("heading", { name: "仅作者可访问" })).toBeVisible();
+    } else {
+      expect(kubeResponse?.status()).toBe(200);
+      await expect(page).toHaveTitle("Kube 游乐场");
+    }
   }
 });
 
