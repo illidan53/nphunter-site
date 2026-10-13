@@ -1,0 +1,7 @@
+name: nphunter-general-iam
+description: Local operator identity for 1GP image publishing; bootstrap with administrator SSO.
+runtime:
+  name: python
+  options:
+    toolchain: pip
+    virtualenv: .venv
