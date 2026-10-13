@@ -8,7 +8,7 @@ async function make({ provider='google', claims={}, issuer, audience='client-id'
   const payload={nonce:'nonce',email:'owner@gmail.com',email_verified:true,sub:'subject',...(provider==='microsoft'?{tid,oid:'00000000-0000-0000-0123-456789abcdef'}:{}),...claims};
   const jwt=await new SignJWT(payload).setProtectedHeader({alg:'RS256'}).setIssuer(issuer||(provider==='google'?'https://accounts.google.com':`https://login.microsoftonline.com/${tid}/v2.0`)).setAudience(audience).setIssuedAt().setExpirationTime(expires).sign(key);
   const requests=[];
-  const oauth=createOAuth({SITE_ORIGIN:'https://nphunter.gg',GOOGLE_CLIENT_ID:'client-id',GOOGLE_CLIENT_SECRET:'secret',MICROSOFT_CLIENT_ID:'client-id',MICROSOFT_CLIENT_SECRET:'secret'}, {jwks:{google:pair.publicKey,microsoft:pair.publicKey},request:async(url,options)=>{requests.push({url,options});return {ok:true,json:async()=>String(url).includes('graph.microsoft.com')?profile:{id_token:jwt,access_token:'access'}};}});
+  const oauth=createOAuth({SITE_ORIGIN:'https://nphunter.net',GOOGLE_CLIENT_ID:'client-id',GOOGLE_CLIENT_SECRET:'secret',MICROSOFT_CLIENT_ID:'client-id',MICROSOFT_CLIENT_SECRET:'secret'}, {jwks:{google:pair.publicKey,microsoft:pair.publicKey},request:async(url,options)=>{requests.push({url,options});return {ok:true,json:async()=>String(url).includes('graph.microsoft.com')?profile:{id_token:jwt,access_token:'access'}};}});
   return {oauth,requests,exchange:()=>oauth.exchange(provider,'code',{nonce:'nonce',verifier:'verifier'})};
 }
 test('OIDC verifies signature, issuer, audience, expiry and nonce',async()=>{
@@ -17,7 +17,7 @@ test('OIDC verifies signature, issuer, audience, expiry and nonce',async()=>{
 });
 test('authorization and exchange use PKCE, exact redirect and no mailbox scope',async()=>{
   const {oauth,requests,exchange}=await make();const url=new URL(await oauth.authorize('google',{state:'state',nonce:'nonce',verifier:'verifier'}));
-  assert.equal(url.searchParams.get('redirect_uri'),'https://nphunter.gg/api/auth/google/callback');assert.equal(url.searchParams.get('code_challenge_method'),'S256');assert.ok(url.searchParams.get('code_challenge'));await exchange();assert.equal(requests[0].options.body.get('code_verifier'),'verifier');
+  assert.equal(url.searchParams.get('redirect_uri'),'https://nphunter.net/api/auth/google/callback');assert.equal(url.searchParams.get('code_challenge_method'),'S256');assert.ok(url.searchParams.get('code_challenge'));await exchange();assert.equal(requests[0].options.body.get('code_verifier'),'verifier');
 });
 test('Microsoft bootstrap uses Graph mailbox, accepts consumer ID format, rejects profile mismatch',async()=>{
   const config={provider:'microsoft',claims:{email:'owner@outlook.com',preferred_username:'owner@outlook.com'},profile:{id:'0123456789abcdef',mail:'other@outlook.com'}};

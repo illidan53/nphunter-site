@@ -2,20 +2,24 @@
 
 Updated: 2026-09-26.
 
-- Website: https://nphunter.gg (https://nphunter.net permanently redirects here)
-- History shell: https://nphunter.gg/history.html (data requires an administrator session)
+- Website: https://nphunter.net (canonical; no redirect to .gg)
+- History shell: https://nphunter.net/history.html (data requires an administrator session)
 - Region: us-east-1, in the AWS account behind the `nphunter-sso` CLI profile
 - CloudFormation stack: `nphunter-api`
 - DynamoDB: the stack's `Records` table (stack output `RecordsTable`)
 - API Gateway origin: stack output `ApiOriginDomain`; it rejects requests without CloudFront's origin header
 - Private deployment artifact bucket: `nphunter-api-artifacts-<account ID>`
-- CloudFront: `E4B5P9MJTIMYQ`, aliases nphunter.gg and nphunter.net
-- TLS: one ACM certificate in us-east-1 covering nphunter.gg and nphunter.net
-- Domains: both registered with Route 53 in this account, auto-renewing (nphunter.net expires 2027-03-31, nphunter.gg 2027-09-26). Each has a Route 53 hosted zone in the same account.
+- CloudFront: `E4B5P9MJTIMYQ`, alias nphunter.net
+- TLS: ACM certificate `037b68bd-60db-4e61-8d6b-44aa008d4b1c` in us-east-1, covering nphunter.net
+- Domain: nphunter.net remains registered with Route 53 (expires 2027-03-31). nphunter.gg auto-renewal was disabled on 2026-10-13, its hosted zone was deleted, and registration deletion completed in Route 53 (operation `86a486cd-311a-4fb1-a8d2-4035e7a8dbe4`: SUCCESSFUL; registered-domain list contains only nphunter.net). The obsolete .gg/SAN certificates were removed after all three distributions switched to .net.
 
-The site moved from nphunter.net to nphunter.gg on 2026-09-26. CloudFront Function `nphunter-site-canonical-host` ([canonical-host.js](canonical-host.js)) runs on viewer requests for the default and `/api/*` behaviors and answers nphunter.net requests with a 301 to the same path and query on nphunter.gg; browsers keep the redirect for one day. The stack's `SiteOrigin` is `https://nphunter.gg`, and Google and Microsoft both have callbacks registered for both domains. The nphunter.net callbacks can be removed once logins on nphunter.gg are confirmed. Subdomains finance, cgame, ggame and tgame remain on nphunter.net. global-network.nphunter.gg (Global Network, added 2026-09-28) is a separate S3 + CloudFront site with its own certificate and distribution, managed from [illidan53/nsite `infra/`](https://github.com/illidan53/nsite/tree/main/infra); it only adds A/AAAA and certificate-validation records to the nphunter.gg hosted zone. k8s-game.nphunter.gg (Kube Playground, added 2026-09-29) is set up the same way (its own S3 bucket, certificate and distribution) and managed from [illidan53/kgame `infra/`](https://github.com/illidan53/kgame/tree/main/infra); it also only adds its own records to the zone.
+On 2026-10-13 the site moved back to nphunter.net. The stack's `SiteOrigin` is `https://nphunter.net`; Google and Microsoft have .net callbacks registered. Existing host-only .gg sessions do not transfer, so visitors sign in again. The former .net → .gg redirect could remain in an existing browser's cache for up to one day; clear cached site data if that happens. The canonical function now redirects .gg to .net if invoked, although .gg is no longer an alias.
 
-The certificate, aliases, function association and nphunter.gg records were applied with the AWS CLI. The Pulumi definition in [illidan53/ggame `infra/nphunter_site`](https://github.com/illidan53/ggame/tree/main/infra/nphunter_site) still describes the distribution before the API integration (nphunter.net only, the old certificate, no `/api/*` behavior or function, global error rewrites). A `pulumi up` there would break login and take nphunter.gg offline, so update that code to match production before running it.
+Global Network is now https://global-network.nphunter.net (`nsite/infra`, Pulumi `nsite-infra/prod`): S3 + CloudFront + Lambda + DynamoDB, no EC2. Kube Playground is https://k8s-game.nphunter.net (`kgame/infra`, Pulumi `kgame-infra/prod`): S3 + CloudFront only. Finance remains https://finance.nphunter.net (`msite/infra`), with EC2 `i-0fa217e019960b606` and its persistent research data. The Vercel projects are unchanged.
+
+The obsolete ggame, cgame and tgame hosting has been retired through targeted Pulumi updates: EC2 instances `i-064ddf2918e84ff97`, `i-07de411cc37e35639` and `i-04e153294841e30fd`, their root disks, dedicated Elastic IPs and A records are removed. Their `infra/Pulumi.dev.yaml` files set `hosting_enabled: false`, and the programs require explicit true to create hosts. The ggame deploy/Pulumi workflows are disabled; cgame and tgame deployment variables are false. ECR images, source, shared VPC, IAM and the main-site resources are retained. Do not destroy the whole ggame stack: it owns the main site and shared .net zone.
+
+The root distribution's API origin and cache/function behaviors are managed by this repository's deployment procedure. The legacy `ggame/infra/nphunter_site` definition ignores those fields, and its CloudFront state was refreshed after migration so a compute cleanup cannot overwrite login routing. Use a preview before any update; do not remove these exclusions without transferring ownership of the full API configuration. The domain migration used the existing CloudFormation template and previous secret parameters, changing only `SiteOrigin`; it did not deploy a new backend build.
 
 The backend and static assets are deployed. `/api/*` uses managed CachingDisabled and AllViewerExceptHostHeader. The old global homepage error rewrites were removed so API status codes are preserved. Lambda uses shared account concurrency because the account quota could not accommodate reserved concurrency; API Gateway request throttling remains enabled.
 
@@ -33,6 +37,15 @@ Administrator mailboxes are the stack parameters `AdminGoogleEmail` and `AdminMi
 
 The header now contains the language selector and Sign in / Sign up buttons. Provider choices appear in a dismissible keyboard-accessible dialog; project shortcut links were removed from the header.
 
-### Kube Playground author-only preview (2026-10-02)
+### Kube Playground public access (2026-10-11)
 
-The Kube Playground destination now restricts all CloudFront viewer requests to the author's configured exact IP address through `kgame-owner-access`, managed in `kgame/infra`. The homepage remains public and labels the card “仅作者可访问 / Author-only access” in both locales. Destination checks may return either the game (200 for the allowed IP) or the explicit author-only page (403 elsewhere). The homepage test handles both; IP configuration stays in encrypted Pulumi config in the game repository.
+Removed the CloudFront author-IP viewer-request gate from `kgame/infra`, including the obsolete function and configuration. The game is public without sign-in, while its S3 bucket remains private behind CloudFront OAC. The homepage no longer labels the card as author-only. Destination checks require HTTP 200 and the game title.
+
+## 2026-10-13 validation
+
+- All three obsolete EC2 instances report `terminated`; the only remaining us-east-1 EBS volume and Elastic IP belong to finance.
+- Main site: 12 backend tests and 18 local browser tests passed; 2 live homepage tests passed at nphunter.net. Anonymous session API returns 200; both provider login starts return 302 with .net callback URLs. Full user sign-in was not performed.
+- Global Network: lint, 51 tests and build passed; HTTPS homepage, `/geo` and `/api/whoami` return 200 on the new domain.
+- Kube: new-domain HTTPS returns 200; a real Chromium check verified the return-home link points to nphunter.net. The existing published hub asset was patched only for its return-home URL, with a new content hash and index invalidation. Local `test/hub.test.js` still fails on the pre-existing unfinished `mission-cargo` registration; those unrelated local changes were not published.
+- Pulumi updates completed for all five affected stacks. The legacy root CloudFront preview reports no changes after refresh and routing exclusions.
+- Migration and retirement changes are committed in their respective repositories; unrelated unfinished game work is preserved. Deployment workflows/variables for the retired EC2 games were disabled in GitHub directly.

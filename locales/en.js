@@ -41,7 +41,6 @@ window.NPHunterLocales.en = {
   "network.cta": "Spin the globe",
   "network.link": "Open Global Network",
   "network.alt": "A cable route leaving a point on the globe for a lit cloud data-center rack",
-  "kube.access": "Author-only access",
   "kube.title": "Kube Playground",
   "kube.intro": "Mini-games for learning Kubernetes: scheduling, OOM, rolling updates.",
   "kube.modes": "Then write an Operator’s Reconcile yourself.",

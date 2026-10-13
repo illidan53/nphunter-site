@@ -83,5 +83,5 @@ jobs:
       - name: Verify public homepage entries
         run: npm run test:e2e
         env:
-          NPHUNTER_SITE_BASE_URL: https://nphunter.gg
+          NPHUNTER_SITE_BASE_URL: https://nphunter.net
           NPHUNTER_SITE_VERIFY_TARGETS: "1"

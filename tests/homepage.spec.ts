@@ -24,12 +24,12 @@ test("homepage exposes all published project entries", async ({ page }) => {
   );
   await expect(page.getByRole("link", { name: "Open Global Network" })).toHaveAttribute(
     "href",
-    "https://global-network.nphunter.gg"
+    "https://global-network.nphunter.net"
   );
-  await expect(page.locator(".kube .owner-only")).toHaveText("Author-only access");
+  await expect(page.locator(".kube")).not.toContainText(/Author-only|仅作者/);
   await expect(page.getByRole("link", { name: "Open Kube Playground" })).toHaveAttribute(
     "href",
-    "https://k8s-game.nphunter.gg"
+    "https://k8s-game.nphunter.net"
   );
   await expect(page.getByRole("link", { name: "Play Demon Blade" })).toHaveAttribute("href", demonBladeUrl);
   // Unfinished games and the private Spring Fields build are not linked from the hub.
@@ -42,16 +42,12 @@ test("homepage exposes all published project entries", async ({ page }) => {
     await page.goto("https://finance.nphunter.net");
     await expect(page).toHaveTitle("Stock Workbench");
     await expect(page.getByRole("heading", { name: "Stock Workbench" })).toBeVisible();
-    await page.goto("https://global-network.nphunter.gg");
+    await page.goto("https://global-network.nphunter.net");
     // Global Network follows the browser language, so its title may be Chinese or English.
     await expect(page).toHaveTitle(/^Net Globe · /);
-    const kubeResponse = await page.goto("https://k8s-game.nphunter.gg");
-    if (kubeResponse?.status() === 403) {
-      await expect(page.getByRole("heading", { name: "仅作者可访问" })).toBeVisible();
-    } else {
-      expect(kubeResponse?.status()).toBe(200);
-      await expect(page).toHaveTitle("Kube 游乐场");
-    }
+    const kubeResponse = await page.goto("https://k8s-game.nphunter.net");
+    expect(kubeResponse?.status()).toBe(200);
+    await expect(page).toHaveTitle("Kube 游乐场");
     await page.goto(demonBladeUrl);
     await expect(page).toHaveTitle(/^妖刀天劫 — 1GP Studio/);
   }

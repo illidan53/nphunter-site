@@ -41,7 +41,6 @@ window.NPHunterLocales.zh = {
   "network.cta": "转动地球",
   "network.link": "打开全球网络地球",
   "network.alt": "地球上从一点出发的海缆路线，连到一座亮着灯的云机房机架",
-  "kube.access": "仅作者可访问",
   "kube.title": "Kube 游乐场",
   "kube.intro": "用小游戏理解 Kubernetes：调度、OOM、滚动更新。",
   "kube.modes": "再亲手写一个 Operator 的 Reconcile。",

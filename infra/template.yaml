@@ -4,7 +4,7 @@ Description: NPHunter private authentication and visitor analytics API
 Parameters:
   SiteOrigin:
     Type: String
-    Default: https://nphunter.gg
+    Default: https://nphunter.net
     AllowedPattern: 'https://[a-zA-Z0-9.-]+'
   OriginSecret:
     Type: String

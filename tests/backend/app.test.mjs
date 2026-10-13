@@ -13,8 +13,8 @@ function setup(admins = ADMINS) {
   };
   let user = { provider:'google', subject:'google-1', email:ADMINS.google, emailVerified:true, name:'Admin' };
   const oauth = {available:()=>({google:true,microsoft:true}),authorize:async(provider,flow)=>`https://provider.example/?state=${flow.state}`,exchange:async()=>structuredClone(user)};
-  const app = createApp({store,oauth,origin:'https://nphunter.gg',originSecret:'test-origin-secret',admins,now:()=>clock});
-  const request = (path,options={}) => app({ rawPath:path, requestContext:{http:{method:options.method||'GET'}}, headers:{'x-origin-verify':'test-origin-secret',origin:'https://nphunter.gg','content-type':'application/json','cloudfront-viewer-address':'203.0.113.1:3456','cloudfront-viewer-country':'US',...options.headers},cookies:options.cookies||[],queryStringParameters:options.q||{},body:options.body });
+  const app = createApp({store,oauth,origin:'https://nphunter.net',originSecret:'test-origin-secret',admins,now:()=>clock});
+  const request = (path,options={}) => app({ rawPath:path, requestContext:{http:{method:options.method||'GET'}}, headers:{'x-origin-verify':'test-origin-secret',origin:'https://nphunter.net','content-type':'application/json','cloudfront-viewer-address':'203.0.113.1:3456','cloudfront-viewer-country':'US',...options.headers},cookies:options.cookies||[],queryStringParameters:options.q||{},body:options.body });
   const login = async() => { const start=await request(`/api/auth/${user.provider}`);const state=new URL(start.headers.location).searchParams.get('state');const cookie=start.cookies[0].split(';')[0];const result=await request(`/api/auth/${user.provider}/callback`,{q:{state,code:'code'},cookies:[cookie]});return {result,state,cookie,session:result.cookies[0]?.split(';')[0]}; };
   return {request,login,setUser:value=>user={...user,...value},data,advance:seconds=>clock+=seconds*1000};
 }

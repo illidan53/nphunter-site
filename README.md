@@ -1,6 +1,6 @@
 # nphunter-site
 
-Website for [nphunter.gg](https://nphunter.gg), served from S3 + CloudFront, with Google/Outlook login and administrator visit analytics on API Gateway, Lambda and DynamoDB. The old nphunter.net domain permanently redirects to nphunter.gg through a CloudFront Function ([infra/canonical-host.js](infra/canonical-host.js)). See [production deployment](infra/DEPLOYMENT.md) for current configuration and credential expiry. The original static infrastructure is defined in [illidan53/ggame `infra/`](https://github.com/illidan53/ggame/tree/main/infra), which lags behind production; the API template is maintained here.
+Website for [nphunter.net](https://nphunter.net), served from S3 + CloudFront, with Google/Outlook login and administrator visit analytics on API Gateway, Lambda and DynamoDB. The canonical domain is nphunter.net; nphunter.gg is retired. See [production deployment](infra/DEPLOYMENT.md) for current configuration and credential expiry. The original static infrastructure is defined in [illidan53/ggame `infra/`](https://github.com/illidan53/ggame/tree/main/infra), which lags behind production; the API template is maintained here.
 
 ## Deploy
 
@@ -11,7 +11,7 @@ Pushes to `main` automatically:
 3. Upload `index.html` with `Cache-Control: no-cache, max-age=0, must-revalidate`, including when its contents are unchanged
 4. Invalidate CloudFront distribution `E4B5P9MJTIMYQ` and wait for completion
 5. Smoke-test against the CloudFront origin
-6. Run the Playwright homepage entry and cache-header tests against `https://nphunter.gg`
+6. Run the Playwright homepage entry and cache-header tests against `https://nphunter.net`
 
 GitHub Actions assumes role `github-actions-nphunter-site-deploy` via OIDC.
 
@@ -22,8 +22,8 @@ npm ci
 npm ci --prefix backend
 npm run test:backend
 npm run test:e2e
-NPHUNTER_SITE_BASE_URL=https://nphunter.gg npm run test:e2e
-NPHUNTER_SITE_BASE_URL=https://nphunter.gg NPHUNTER_SITE_VERIFY_TARGETS=1 npm run test:e2e
+NPHUNTER_SITE_BASE_URL=https://nphunter.net npm run test:e2e
+NPHUNTER_SITE_BASE_URL=https://nphunter.net NPHUNTER_SITE_VERIFY_TARGETS=1 npm run test:e2e
 ```
 
 The HTML cache policy requires browsers to validate their cached homepage before reuse. CloudFront invalidation alone cannot clear a page already cached in a visitor’s browser. Visitors who still hold a page from before this policy was added should reload once.
@@ -55,8 +55,8 @@ History has 7/30/90-day trends, range-wide distinct visitor and guest counts, da
 
 ### Configure and deploy backend
 
-1. Google Cloud: create a Web OAuth client, configure the consent screen and `openid email profile` scopes. Use callback `https://nphunter.gg/api/auth/google/callback`. Publish the app's audience when ready for all users; testing mode is restricted to configured test accounts.
-2. Microsoft Entra: register a **Web** application supporting **personal Microsoft accounts only**, callback `https://nphunter.gg/api/auth/microsoft/callback`. Grant delegated `User.Read` plus OIDC scopes, and create a client secret with a recorded expiry date. Do not enable implicit flow or public-client password flow. Rotate the client secret before expiry.
+1. Google Cloud: create a Web OAuth client, configure the consent screen and `openid email profile` scopes. Use callback `https://nphunter.net/api/auth/google/callback`. Publish the app's audience when ready for all users; testing mode is restricted to configured test accounts.
+2. Microsoft Entra: register a **Web** application supporting **personal Microsoft accounts only**, callback `https://nphunter.net/api/auth/microsoft/callback`. Grant delegated `User.Read` plus OIDC scopes, and create a client secret with a recorded expiry date. Do not enable implicit flow or public-client password flow. Rotate the client secret before expiry.
 3. Install/package backend dependencies: `npm ci --prefix backend`. Package `infra/template.yaml` using AWS SAM (`sam build`) or `aws cloudformation package --template-file infra/template.yaml --s3-bucket YOUR_PRIVATE_ARTIFACT_BUCKET --output-template-file /private/path/packaged.yaml`. Use a private artifact bucket, never the public website bucket.
 4. Deploy the packaged template with stack name `nphunter-api`, IAM capability, and parameters `SiteOrigin`, `OriginSecret` (random 32+ characters), `GoogleClientId`, `GoogleClientSecret`, `MicrosoftClientId`, `MicrosoftClientSecret`, `AdminGoogleEmail`, `AdminMicrosoftEmail`, and optionally `RetentionDays`. Secret parameters are `NoEcho`; supply them through a protected parameter file/secret manager, never commit them or paste them into command history. Blank provider credentials disable that provider safely.
 5. Fetch the existing CloudFront configuration and ETag. Set `NPHUNTER_API_DOMAIN` to stack output `ApiOriginDomain` and `NPHUNTER_ORIGIN_SECRET` to the same origin secret. `infra/cloudfront-config.py` reads the existing distribution JSON on stdin and writes a proposed full configuration on stdout. Review and apply with `aws cloudfront update-distribution --if-match ETAG --distribution-config file:///private/path/proposed.json`. This retains the site's S3 origin and adds `/api/*`, managed **CachingDisabled** and **AllViewerExceptHostHeader** (includes CloudFront viewer location headers). Keep the output private: it includes the origin secret.
