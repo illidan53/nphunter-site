@@ -1,2 +1,3 @@
 config:
   aws:region: us-east-1
+  nphunter-general-iam:hostedZoneId: Z05670062ZTWRSY6PDM7V
