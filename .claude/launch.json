@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-c",
+        "import functools, http.server as h\nclass H(h.SimpleHTTPRequestHandler):\n    def end_headers(self):\n        self.send_header('Cache-Control', 'no-store')\n        super().end_headers()\nh.ThreadingHTTPServer(('127.0.0.1', 4178), functools.partial(H, directory='.')).serve_forever()"
+      ],
+      "port": 4178
+    }
+  ]
+}
