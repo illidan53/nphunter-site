@@ -83,17 +83,20 @@ test('game gallery supports keyboard focus, Escape, close, and backdrop dismissa
   await page.keyboard.press('Escape');
   await expect(dialog).toBeHidden();
   await expect(trigger).toBeFocused();
-  expect(await page.locator('body').evaluate(element => element.style.overflow)).toBe(originalOverflow);
+  // Native focus restoration can precede the asynchronously dispatched close event.
+  await expect.poll(() => page.locator('body').evaluate(element => element.style.overflow)).toBe(originalOverflow);
   await trigger.click();
   await dialog.getByRole('button', { name: 'Close', exact: true }).click();
   await expect(dialog).toBeHidden();
   await expect(trigger).toBeFocused();
+  await expect.poll(() => page.locator('body').evaluate(element => element.style.overflow)).toBe(originalOverflow);
   // Clicking the visible collection itself is also an entry point.
   await page.locator('.project.games h3').click();
   await expect(dialog).toBeVisible();
   await page.mouse.click(2, 2);
   await expect(dialog).toBeHidden();
   await expect(trigger).toBeFocused();
+  await expect.poll(() => page.locator('body').evaluate(element => element.style.overflow)).toBe(originalOverflow);
 });
 
 test('a game card opens its verified AIWANNA page in a new tab', async ({ page, context }) => {
