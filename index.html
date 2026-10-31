@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#060818">
-  <meta name="description" content="NPHunter 的个人项目小站。探索 24 点游戏、暗冠棋、春野逐鹿、金融工作台、全球网络地球、Kube 游乐场和妖刀天劫。">
+  <meta name="description" content="NPHunter 的个人项目小站。浏览 Aiwanna 游戏收藏、金融工作台、全球网络地球和 Kube 游乐场。">
   <title>nphunter — 好奇心的游乐场</title>
   <script>
     // Apply a saved interface style before the first paint. Styled is the default.
@@ -94,7 +94,7 @@
     @media (max-width:600px) { header { padding:16px 0; gap:12px; flex-wrap:wrap; } .hero-title { line-height:1.6; } }
     @media (prefers-reduced-motion:reduce) { *, *::before, *::after { transition:none !important; scroll-behavior:auto !important; } .project:hover, .project:active { transform:none; } }
   </style>
-  <link rel="stylesheet" href="styled.css">
+  <link rel="stylesheet" href="styled.css?v=20261031a">
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z" fill="currentColor"/></symbol><symbol id="spring-art" viewBox="0 0 160 160" fill="none"><circle cx="90" cy="78" r="56" fill="#f1dc8c"/><path d="m33 117 36-35 24 20 24-31 27 46Z" fill="#c4bd78"/><path d="M78 107V35" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="m80 36 44 9-15 15 15 15-44-9Z" fill="#fff9e7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m65 120 13-13 14 13m-43 10h69" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="46" cy="57" r="10" fill="#fff9e7"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.8v2.1m0 14.2v2.1M2.8 12h2.1m14.2 0h2.1M5.5 5.5 7 7m10 10 1.5 1.5m0-13L17 7M7 17l-1.5 1.5"/></symbol><symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9.5 5.5 6.5 6.5-6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
@@ -124,82 +124,124 @@
       </section>
       <section id="projects" aria-labelledby="projects-title">
         <h2 id="projects-title" class="sr-only"><span data-i18n="projects.heading">从这里，开启探索</span></h2>
+        <div class="collection-heading"><p class="collection-label"><span data-i18n="collection.label">好奇心的不同去处</span></p><span class="collection-index">NPH / 01—05</span></div>
         <div class="projects" id="project-track">
-          <a class="project featured points" href="https://1gp-game-1bb7a52890b41f01-q6ozbh23f-1gp-studio.vercel.app/" aria-label="玩 24 点游戏" data-i18n-aria-label="points.link">
-            <div class="slide-inner">
-              <div class="project-top"><span><span data-i18n="category.1">01 / 游戏</span></span></div>
-              <div class="project-content"><h3><span data-i18n="points.title">24 点游戏</span></h3><p><span data-i18n="points.intro">四张纸牌，加减乘除，凑出 24。</span><br><span data-i18n="points.modes">随心练习、13 轮竞速，或挑战无尽模式。</span></p></div>
-              <span class="project-screen"><img class="featured-art" src="assets/24-points-cards.png?v=20260926c" width="932" height="374" alt="24 点游戏中的 A、2、3、4 四张纸牌" data-i18n-alt="points.alt"></span>
-              <div class="project-bottom"><span class="cta"><span data-i18n="points.cta">发牌，开始玩</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
-            </div>
-          </a>
-          <a class="project featured crown" href="https://1gp-game-b83051de5d1f07c4-38xd8px29-1gp-studio.vercel.app/" aria-label="玩暗冠棋" data-i18n-aria-label="crown.link">
-            <div class="slide-inner">
-              <div class="project-top"><span><span data-i18n="category.2">02 / 游戏</span></span></div>
-              <div class="project-content"><h3><span data-i18n="crown.title">暗冠棋</span></h3><p><span data-i18n="crown.intro">32 枚暗棋，翻开、移动，以大吃小。</span><br><span data-i18n="crown.modes">但兵能吃王。人机对战，或同屏双人。</span></p></div>
-              <span class="project-screen"><img class="featured-art" src="assets/crownflip-tokens.svg" width="480" height="200" alt="暗冠棋的棋子：翻开的王和马、一枚暗棋，以及正在翻开的后" data-i18n-alt="crown.alt"></span>
-              <div class="project-bottom"><span class="cta"><span data-i18n="crown.cta">翻一枚，开始玩</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
-            </div>
-          </a>
-          <div class="project spring" data-dialog="spring-dialog">
-            <div class="slide-inner">
-              <div class="project-top"><span><span data-i18n="category.3">03 / 游戏</span></span></div>
-              <div class="project-content"><h3><span data-i18n="spring.title">春野逐鹿</span></h3><p><span data-i18n="spring.intro">一款老游戏的个人复刻实验，只在本地运行。</span></p></div>
-              <span class="project-screen"><svg class="card-art" viewBox="0 0 160 160" fill="none" aria-hidden="true"><use href="#spring-art"/></svg></span>
-              <div class="project-bottom"><button class="cta" type="button" aria-haspopup="dialog" aria-controls="spring-dialog" aria-label="了解项目：春野逐鹿" data-i18n-aria-label="spring.button"><span data-i18n="spring.cta">了解项目</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></button></div>
+          <div class="project games" data-dialog="games-dialog">
+            <div class="games-layout">
+              <div class="games-copy">
+                <div class="project-top"><span data-i18n="games.category">01 / 游戏收藏</span></div>
+                <h3><span data-i18n="games.title">游戏</span></h3>
+                <p class="games-intro"><span data-i18n="games.intro">有时动脑，有时手忙脚乱。把一个个想法做成游戏，放在这里，随时开一局。</span></p>
+                <p class="games-meta"><span data-i18n="games.meta">9 款游戏 · 2 个联机实验</span></p>
+                <button class="cta games-cta" type="button" aria-haspopup="dialog" aria-controls="games-dialog" aria-label="浏览游戏" data-i18n-aria-label="games.button"><span data-i18n="games.cta">打开游戏收藏</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></button>
+              </div>
+              <div class="games-collage" aria-hidden="true"><figure class="game-preview"><img src="assets/games/floorplay.webp" width="640" height="360" alt="" decoding="async"><figcaption><span data-i18n="game.floorplay.title">快躲开 · FLOORPLAY</span></figcaption></figure>
+<figure class="game-preview"><img src="assets/games/sea-routes.webp" width="640" height="360" alt="" decoding="async"><figcaption><span data-i18n="game.sea-routes.title">海路</span></figcaption></figure>
+<figure class="game-preview"><img src="assets/games/crownflip.webp" width="640" height="360" alt="" decoding="async"><figcaption><span data-i18n="game.crownflip.title">暗冠棋</span></figcaption></figure>
+<figure class="game-preview"><img src="assets/games/make24.webp" width="640" height="360" alt="" decoding="async"><figcaption><span data-i18n="game.make24.title">24 点游戏</span></figcaption></figure>
+<figure class="game-preview"><img src="assets/games/lego.webp" width="640" height="360" alt="" decoding="async"><figcaption><span data-i18n="game.lego.title">Guess My LEGO</span></figcaption></figure>
+<figure class="game-preview"><img src="assets/games/demon-blade.webp" width="640" height="360" alt="" decoding="async"><figcaption><span data-i18n="game.demon-blade.title">妖刀天劫</span></figcaption></figure></div>
             </div>
           </div>
           <a class="project finance" href="https://finance.nphunter.net" aria-label="打开金融工作台" data-i18n-aria-label="finance.link">
             <div class="slide-inner">
-              <div class="project-top"><span><span data-i18n="category.4">04 / 金融</span></span></div>
+              <div class="project-top"><span><span data-i18n="category.4">02 / 金融</span></span></div>
               <div class="project-content"><h3><span data-i18n="finance.title">金融工作台</span></h3><p><span data-i18n="finance.intro">换个视角，打开你的金融工作台。</span></p></div>
               <span class="project-screen"><svg class="card-art" viewBox="0 0 160 160" fill="none" aria-hidden="true"><circle cx="88" cy="78" r="57" fill="#bfe2ce"/><rect x="36" y="46" width="105" height="78" rx="10" fill="#f1fcf5" stroke="currentColor" stroke-width="2" transform="rotate(-7 36 46)"/><path d="M53 108V91m22 14V81m22 21V69m22 30V78" stroke="#83b99a" stroke-width="10"/><path d="m50 79 25-17 21 2 24-24m-14 2 15-3-1 15" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <div class="project-bottom"><span class="cta"><span data-i18n="finance.cta">打开工作台</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span><span class="domain">finance.nphunter.net</span></div>
             </div>
           </a>
-          <a class="project featured network" href="https://global-network.nphunter.net" aria-label="打开全球网络地球" data-i18n-aria-label="network.link">
+          <a class="project network" href="https://global-network.nphunter.net" aria-label="打开全球网络地球" data-i18n-aria-label="network.link">
             <div class="slide-inner">
-              <div class="project-top"><span><span data-i18n="category.5">05 / 网络</span></span></div>
+              <div class="project-top"><span><span data-i18n="category.5">03 / 全球网络</span></span></div>
               <div class="project-content"><h3><span data-i18n="network.title">全球网络地球</span></h3><p><span data-i18n="network.intro">点地球上任意一处，看附近的云机房和延迟。</span><br><span data-i18n="network.modes">数据走哪条海缆、每一跳多远，一路画给你看。</span></p></div>
               <span class="project-screen"><img class="featured-art" src="assets/global-network-globe.svg" width="480" height="200" alt="地球上从一点出发的海缆路线，连到一座亮着灯的云机房机架" data-i18n-alt="network.alt"></span>
               <div class="project-bottom"><span class="cta"><span data-i18n="network.cta">转动地球</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
             </div>
           </a>
-          <a class="project featured kube" href="https://k8s-game.nphunter.net" aria-label="打开 Kube 游乐场" data-i18n-aria-label="kube.link">
+          <a class="project kube" href="https://k8s-game.nphunter.net" aria-label="打开 Kube 游乐场" data-i18n-aria-label="kube.link">
             <div class="slide-inner">
-              <div class="project-top"><span><span data-i18n="category.6">06 / 学习</span></span></div>
+              <div class="project-top"><span><span data-i18n="category.6">04 / 学习</span></span></div>
               <div class="project-content"><h3><span data-i18n="kube.title">Kube 游乐场</span></h3><p><span data-i18n="kube.intro">用小游戏理解 Kubernetes：调度、OOM、滚动更新。</span><br><span data-i18n="kube.modes">再亲手写一个 Operator 的 Reconcile。</span></p></div>
               <span class="project-screen"><img class="featured-art" src="assets/kube-playground.svg" width="480" height="200" alt="舵轮旁一台装满 Pod 的节点，一个超出内存上限的容器正在爆开" data-i18n-alt="kube.alt"></span>
               <div class="project-bottom"><span class="cta"><span data-i18n="kube.cta">开始闯关</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
             </div>
           </a>
-          <a class="project featured blade" href="https://1gp-game-platform.vercel.app/games/dgame-4c17fb47" aria-label="玩妖刀天劫" data-i18n-aria-label="blade.link">
+          <div class="project spring" data-dialog="spring-dialog">
             <div class="slide-inner">
-              <div class="project-top"><span><span data-i18n="category.7">07 / 游戏</span></span></div>
-              <div class="project-content"><h3><span data-i18n="blade.title">妖刀天劫</span></h3><p><span data-i18n="blade.intro">一人一刀，守住村中祠堂，挡下一波波来袭的敌军。</span><br><span data-i18n="blade.modes">水墨风 RPG 守家，灵感来自魔兽争霸 3 自定义地图。</span></p></div>
-              <span class="project-screen"><img class="featured-art" src="assets/demon-blade.svg" width="480" height="200" alt="水墨画卷前，一名剑客举起泛着红光的妖刀，迎向逼近祠堂的敌军" data-i18n-alt="blade.alt"></span>
-              <div class="project-bottom"><span class="cta"><span data-i18n="blade.cta">拔刀，开始玩</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></span></div>
+              <div class="project-top"><span><span data-i18n="category.3">05 / 本地实验</span></span></div>
+              <div class="project-content"><h3><span data-i18n="spring.title">春野逐鹿</span></h3><p><span data-i18n="spring.intro">一款老游戏的个人复刻实验，只在本地运行。</span></p></div>
+              <span class="project-screen"><svg class="card-art" viewBox="0 0 160 160" fill="none" aria-hidden="true"><use href="#spring-art"/></svg></span>
+              <div class="project-bottom"><button class="cta" type="button" aria-haspopup="dialog" aria-controls="spring-dialog" aria-label="了解项目：春野逐鹿" data-i18n-aria-label="spring.button"><span data-i18n="spring.cta">了解项目</span><span class="arrow"><svg aria-hidden="true"><use href="#arrow"/></svg></span></button></div>
             </div>
-          </a>
+          </div>
         </div>
-        <nav class="project-dock" aria-label="选择项目" data-i18n-aria-label="dock.label">
-          <button class="carousel-arrow carousel-prev" type="button" aria-controls="project-track" aria-label="上一个项目" data-i18n-aria-label="carousel.prev"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
-          <ol>
-            <li><button type="button" data-project="points" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="points.title">24 点游戏</span></button></li>
-            <li><button type="button" data-project="crown" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="crown.title">暗冠棋</span></button></li>
-            <li><button type="button" data-project="spring" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="spring.title">春野逐鹿</span></button></li>
-            <li><button type="button" data-project="finance" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="finance.title">金融工作台</span></button></li>
-            <li><button type="button" data-project="network" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="network.title">全球网络地球</span></button></li>
-            <li><button type="button" data-project="kube" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="kube.title">Kube 游乐场</span></button></li>
-            <li><button type="button" data-project="blade" aria-controls="project-track"><span class="dock-dot" aria-hidden="true"></span><span data-i18n="blade.title">妖刀天劫</span></button></li>
-          </ol>
-          <button class="carousel-arrow carousel-next" type="button" aria-controls="project-track" aria-label="下一个项目" data-i18n-aria-label="carousel.next"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
-        </nav>
-        <p id="carousel-status" class="sr-only" role="status" aria-live="polite"></p>
       </section>
     </main>
     <footer><span><span data-i18n="footer.copyright">© NPHunter · 一个持续生长的个人项目小站</span></span></footer>
   </div>
+  <dialog id="games-dialog" class="project-dialog games-dialog" tabindex="-1" aria-labelledby="games-dialog-title" aria-describedby="games-dialog-intro">
+    <div class="games-dialog-head">
+      <p class="games-dialog-eyebrow">NPHUNTER / AIWANNA</p>
+      <h2 id="games-dialog-title"><span data-i18n="games.dialog.title">挑一款，开始玩</span></h2>
+      <p id="games-dialog-intro"><span data-i18n="games.dialog.intro">从轻松解谜到节奏挑战，点击封面，前往 Aiwanna 开始游戏。</span></p>
+      <button class="dialog-close" type="button" data-close aria-label="关闭" data-i18n-aria-label="dialog.close">×</button>
+    </div>
+    <div class="games-dialog-content">
+      <div class="games-grid">
+        <a class="game-card floorplay" href="https://www.aiwanna.games/games/7ff06377b930bd306a8b88f7f8ba2157-114f70bb" target="_blank" rel="noopener noreferrer">
+          <div class="game-cover"><img src="assets/games/floorplay.webp" width="640" height="360" alt="" loading="lazy" decoding="async"></div>
+          <div class="game-card-body"><span class="game-genre"><span data-i18n="game.floorplay.genre">节奏 / 动作</span></span><h3><span data-i18n="game.floorplay.title">快躲开 · FLOORPLAY</span></h3><p><span data-i18n="game.floorplay.intro">跟着节拍走位，闪避危险区域，击碎音核。</span></p><span class="game-play"><span data-i18n="games.play">在 Aiwanna 玩</span><svg aria-hidden="true"><use href="#arrow"/></svg></span></div>
+        </a>
+        <a class="game-card breaklock" href="https://www.aiwanna.games/games/6ac7b2a01196c3347e0eee1236d4506c-a7760a79" target="_blank" rel="noopener noreferrer">
+          <div class="game-cover"><img src="assets/games/breaklock.webp" width="640" height="360" alt="" loading="lazy" decoding="async"></div>
+          <div class="game-card-body"><span class="game-genre"><span data-i18n="game.breaklock.genre">逻辑 / 解谜</span></span><h3><span data-i18n="game.breaklock.title">BreakLock · 图案解锁</span></h3><p><span data-i18n="game.breaklock.intro">连起九宫格里的圆点，用每次反馈推理隐藏图案。</span></p><span class="game-play"><span data-i18n="games.play">在 Aiwanna 玩</span><svg aria-hidden="true"><use href="#arrow"/></svg></span></div>
+        </a>
+        <a class="game-card lego" href="https://www.aiwanna.games/games/1b933b5d8aad99840d1a074c6e7bd937-894b6aa9" target="_blank" rel="noopener noreferrer">
+          <div class="game-cover"><img src="assets/games/lego.webp" width="640" height="360" alt="" loading="lazy" decoding="async"></div>
+          <div class="game-card-body"><span class="game-genre"><span data-i18n="game.lego.genre">积木 / 解谜</span></span><h3><span data-i18n="game.lego.title">Guess My LEGO</span></h3><p><span data-i18n="game.lego.intro">从逐步揭示的结构线索，猜出 80 款积木模型。</span></p><span class="game-play"><span data-i18n="games.play">在 Aiwanna 玩</span><svg aria-hidden="true"><use href="#arrow"/></svg></span></div>
+        </a>
+        <a class="game-card sea-routes" href="https://www.aiwanna.games/games/3c60ef6764cb29909fd1599ba3a71520-5e3c2f68" target="_blank" rel="noopener noreferrer">
+          <div class="game-cover"><img src="assets/games/sea-routes.webp" width="640" height="360" alt="" loading="lazy" decoding="async"></div>
+          <div class="game-card-body"><span class="game-genre"><span data-i18n="game.sea-routes.genre">海洋 / 探索</span></span><h3><span data-i18n="game.sea-routes.title">海路</span></h3><p><span data-i18n="game.sea-routes.intro">陪蓝鲸一路向北，穿过九站海域，经历觅食与风暴。</span></p><span class="game-play"><span data-i18n="games.play">在 Aiwanna 玩</span><svg aria-hidden="true"><use href="#arrow"/></svg></span></div>
+        </a>
+        <a class="game-card demon-blade" href="https://www.aiwanna.games/games/dgame-4c17fb47" target="_blank" rel="noopener noreferrer">
+          <div class="game-cover"><img src="assets/games/demon-blade.webp" width="640" height="360" alt="" loading="lazy" decoding="async"></div>
+          <div class="game-card-body"><span class="game-genre"><span data-i18n="game.demon-blade.genre">RPG / 守家</span></span><h3><span data-i18n="game.demon-blade.title">妖刀天劫</span></h3><p><span data-i18n="game.demon-blade.intro">一人一刀，守住村中祠堂，挡下一波波来袭的敌军。</span></p><span class="game-play"><span data-i18n="games.play">在 Aiwanna 玩</span><svg aria-hidden="true"><use href="#arrow"/></svg></span></div>
+        </a>
+        <a class="game-card fallcover" href="https://www.aiwanna.games/games/6c01ca33bf3b16338f966df54528f168-f09563ee" target="_blank" rel="noopener noreferrer">
+          <div class="game-cover"><img src="assets/games/fallcover.webp" width="640" height="427" alt="" loading="lazy" decoding="async"></div>
+          <div class="game-card-body"><span class="game-genre"><span data-i18n="game.fallcover.genre">物理 / 休闲</span></span><h3><span data-i18n="game.fallcover.title">FallCover · 盖卡</span></h3><p><span data-i18n="game.fallcover.intro">选位置、调弯折、松手，让飘落的纸牌盖住目标。</span></p><span class="game-play"><span data-i18n="games.play">在 Aiwanna 玩</span><svg aria-hidden="true"><use href="#arrow"/></svg></span></div>
+        </a>
+        <a class="game-card crownflip" href="https://www.aiwanna.games/games/8ffa6bea3b4d8a86fb964aa980cd03a2-b83051de" target="_blank" rel="noopener noreferrer">
+          <div class="game-cover"><img src="assets/games/crownflip.webp" width="640" height="360" alt="" loading="lazy" decoding="async"></div>
+          <div class="game-card-body"><span class="game-genre"><span data-i18n="game.crownflip.genre">棋盘 / 策略</span></span><h3><span data-i18n="game.crownflip.title">暗冠棋</span></h3><p><span data-i18n="game.crownflip.intro">32 枚暗棋，翻开、移动、以大吃小；也要小心兵。</span></p><span class="game-play"><span data-i18n="games.play">在 Aiwanna 玩</span><svg aria-hidden="true"><use href="#arrow"/></svg></span></div>
+        </a>
+        <a class="game-card make24" href="https://www.aiwanna.games/games/0c15d8ef57a9e7409a802bdea4b3a884-1bb7a528" target="_blank" rel="noopener noreferrer">
+          <div class="game-cover"><img src="assets/games/make24.webp" width="640" height="360" alt="" loading="lazy" decoding="async"></div>
+          <div class="game-card-body"><span class="game-genre"><span data-i18n="game.make24.genre">数字 / 益智</span></span><h3><span data-i18n="game.make24.title">24 点游戏</span></h3><p><span data-i18n="game.make24.intro">四张纸牌凑出 24，随心练习、13 轮竞速或挑战无尽。</span></p><span class="game-play"><span data-i18n="games.play">在 Aiwanna 玩</span><svg aria-hidden="true"><use href="#arrow"/></svg></span></div>
+        </a>
+        <a class="game-card minesweeper" href="https://www.aiwanna.games/games/minesweper-78b8b1ae" target="_blank" rel="noopener noreferrer">
+          <div class="game-cover"><img src="assets/games/minesweeper.webp" width="640" height="360" alt="" loading="lazy" decoding="async"></div>
+          <div class="game-card-body"><span class="game-genre"><span data-i18n="game.minesweeper.genre">经典 / 益智</span></span><h3><span data-i18n="game.minesweeper.title">小小扫雷</span></h3><p><span data-i18n="game.minesweeper.intro">慢一点，也能赢。三档难度，首击安全，逐格寻找线索。</span></p><span class="game-play"><span data-i18n="games.play">在 Aiwanna 玩</span><svg aria-hidden="true"><use href="#arrow"/></svg></span></div>
+        </a>
+      </div>
+      <section class="games-experiments" aria-labelledby="experiments-title">
+        <h3 id="experiments-title"><span data-i18n="games.experiments.title">实验作品</span></h3><p><span data-i18n="games.experiments.intro">关于多人联机与同步的两个小实验。</span></p>
+        <div class="games-grid">
+        <a class="game-card arena-vercel" href="https://www.aiwanna.games/games/12f22020b083e36dc64124a8fb35ed22-e47fcc2e" target="_blank" rel="noopener noreferrer">
+          <div class="game-cover"><img src="assets/games/arena-vercel.webp" width="640" height="360" alt="" loading="lazy" decoding="async"></div>
+          <div class="game-card-body"><span class="game-genre"><span data-i18n="game.arena-vercel.genre">多人 / 技术实验</span></span><h3><span data-i18n="game.arena-vercel.title">同墨 · Vercel 实验</span></h3><p><span data-i18n="game.arena-vercel.intro">从两个视角观察同一房间里的落子是否一致。</span></p><span class="game-play"><span data-i18n="games.play">在 Aiwanna 玩</span><svg aria-hidden="true"><use href="#arrow"/></svg></span></div>
+        </a>
+        <a class="game-card arena-aws" href="https://www.aiwanna.games/games/self-host-test-game-c8b3994e" target="_blank" rel="noopener noreferrer">
+          <div class="game-cover"><img src="assets/games/arena-aws.webp" width="640" height="360" alt="" loading="lazy" decoding="async"></div>
+          <div class="game-card-body"><span class="game-genre"><span data-i18n="game.arena-aws.genre">多人 / 技术实验</span></span><h3><span data-i18n="game.arena-aws.title">同墨 · AWS EC2 实验</span></h3><p><span data-i18n="game.arena-aws.intro">部署于 AWS EC2 的多人一致性技术测试场。</span></p><span class="game-play"><span data-i18n="games.play">在 Aiwanna 玩</span><svg aria-hidden="true"><use href="#arrow"/></svg></span></div>
+        </a>
+        </div>
+      </section>
+      <div class="games-profile"><span><span data-i18n="games.newtab">游戏将在新标签页打开</span></span><a href="https://www.aiwanna.games/creators/7" target="_blank" rel="noopener noreferrer"><span data-i18n="games.profile">我的 Aiwanna 主页 ↗</span></a></div>
+    </div>
+  </dialog>
   <dialog id="spring-dialog" class="project-dialog" tabindex="-1" aria-labelledby="spring-dialog-title" aria-describedby="spring-dialog-lead">
     <div class="dialog-head">
       <span class="project-status"><span data-i18n="spring.status">Godot · 不公开</span></span>
@@ -217,11 +259,11 @@
       <div class="dialog-actions"><button class="dialog-ok" type="button" data-close><span data-i18n="dialog.ok">知道了</span></button></div>
     </div>
   </dialog>
-  <script src="locales/zh.js?v=20260926e"></script>
-  <script src="locales/en.js?v=20260926e"></script>
+  <script src="locales/zh.js?v=20261031a"></script>
+  <script src="locales/en.js?v=20261031a"></script>
   <script src="language.js"></script>
-  <script src="projects.js"></script>
-  <script src="styled.js"></script>
+  <script src="projects.js?v=20261031a"></script>
+  <script src="styled.js?v=20261031a"></script>
   <script src="account.js"></script>
 </body>
 </html>
